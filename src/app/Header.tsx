@@ -26,14 +26,14 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2 md:gap-3 flex-shrink-0">
           <Image src="/logo1.png" alt="Logo" width={40} height={40} />
           <span
-            className="text-xs md:text-sm font-light truncate max-w-[120px] md:max-w-xs"
+            className="text-sm md:text-base font-light truncate max-w-[120px] md:max-w-xs"
             style={{ color: mossGreen, fontFamily: "'Outfit','Inter',sans-serif" }}
           >
             Nordic modular houses
           </span>
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop navigation */}
         <nav className="hidden md:flex gap-4 md:gap-6">
           {navItems.map((item) => (
             <Link
