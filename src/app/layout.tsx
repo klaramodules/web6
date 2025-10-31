@@ -9,8 +9,8 @@ const roboto = RobotoFont({
 });
 
 export const metadata: Metadata = {
-  title: "KlaraWeb",
-  description: "Modern och stilren webbplats med Next.js och Tailwind CSS",
+  title: "Klara Nordic Modules",
+  description: "Klara modules - Built in Finland",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

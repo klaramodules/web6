@@ -21,20 +21,42 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-[#f7f3eb] border-b border-[#2F3E2F]/25 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 md:py-3 h-14 md:h-16">
-        {/* Logo + tagline */}
-        <Link href="/" className="flex items-center gap-2 md:gap-3 flex-shrink-0">
-          <Image src="/logo1.png" alt="Logo" width={40} height={40} />
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-14 md:h-14 px-3 md:px-8">
+        
+        {/* LOGO + TAGLINE */}
+        <Link href="/" className="flex items-center gap-2 md:gap-3">
+          <div className="flex-shrink-0">
+            <Image
+              src="/logo1.png"
+              alt="Logo"
+              width={60}
+              height={60}
+              className="object-contain w-[45px] h-[45px] md:w-[60px] md:h-[60px]"
+            />
+          </div>
+
           <span
-            className="text-sm md:text-base font-light truncate max-w-[120px] md:max-w-xs"
-            style={{ color: mossGreen, fontFamily: "'Outfit','Inter',sans-serif" }}
+            className="
+              text-xs md:text-sm 
+              font-light
+              leading-tight
+              md:max-w-sm
+              max-w-[180px]
+              whitespace-nowrap
+              overflow-hidden
+              text-ellipsis
+            "
+            style={{
+              color: mossGreen,
+              fontFamily: "'Outfit','Inter',sans-serif",
+            }}
           >
-            Nordic modular houses
+            Nordic modular houses, delivered ready-to-use
           </span>
         </Link>
 
-        {/* Desktop navigation */}
-        <nav className="hidden md:flex gap-4 md:gap-6">
+        {/* DESKTOP NAV */}
+        <nav className="hidden md:flex gap-6 ml-auto">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -42,7 +64,7 @@ export default function Header() {
               className={`text-sm md:text-base font-medium transition ${
                 pathname === item.href
                   ? "text-[#2F3E2F] border-b-2 border-[#2F3E2F]"
-                  : "text-[#2F3E2F]/80 hover:text-[#2F3E2F]"
+                  : "text-[#2F3E2F]/70 hover:text-[#2F3E2F]"
               }`}
             >
               {item.label}
@@ -50,20 +72,20 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Mobile hamburger */}
+        {/* MOBILE HAMBURGER */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-2xl font-bold text-[#2F3E2F]"
+          className="md:hidden text-3xl font-bold text-[#2F3E2F]"
           aria-label="Toggle menu"
         >
           {menuOpen ? "✕" : "☰"}
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* MOBILE MENU */}
       {menuOpen && (
         <nav className="md:hidden bg-[#f7f3eb] border-t border-[#2F3E2F]/25">
-          <ul className="flex flex-col gap-2 p-3">
+          <ul className="flex flex-col gap-3 p-4">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
@@ -71,7 +93,7 @@ export default function Header() {
                   className={`block text-base font-medium ${
                     pathname === item.href
                       ? "text-[#2F3E2F]"
-                      : "text-[#2F3E2F]/80 hover:text-[#2F3E2F]"
+                      : "text-[#2F3E2F]/70 hover:text-[#2F3E2F]"
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >

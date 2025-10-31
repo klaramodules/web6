@@ -75,7 +75,9 @@ export default function Home() {
               lineHeight: "1.3",
             }}
           >
-            Finnish Quality. Delivered Ready-to-Use.
+            Modular Homes. Nordic Quality. 
+              <br />
+              Finnish Precision.
           </h1>
           <div
             className="mx-auto"
