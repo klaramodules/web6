@@ -22,7 +22,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full bg-[#f7f3eb] border-b border-[#2F3E2F]/25 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-14 md:h-14 px-3 md:px-8">
-        
+
         {/* LOGO + TAGLINE */}
         <Link href="/" className="flex items-center gap-2 md:gap-3">
           <div className="flex-shrink-0">
@@ -31,27 +31,15 @@ export default function Header() {
               alt="Logo"
               width={60}
               height={60}
-              className="object-contain w-[45px] h-[45px] md:w-[60px] md:h-[60px]"
+              className="object-contain w-[55px] h-[55px] md:w-[65px] md:h-[65px]"
             />
           </div>
 
           <span
-            className="
-              text-xs md:text-sm 
-              font-light
-              leading-tight
-              md:max-w-sm
-              max-w-[180px]
-              whitespace-nowrap
-              overflow-hidden
-              text-ellipsis
-            "
-            style={{
-              color: mossGreen,
-              fontFamily: "'Outfit','Inter',sans-serif",
-            }}
+            className="text-xs md:text-sm font-light leading-tight max-w-[180px] md:max-w-xs overflow-hidden whitespace-nowrap text-ellipsis"
+            style={{ color: mossGreen, fontFamily: "'Outfit','Inter',sans-serif" }}
           >
-            Nordic modular houses, delivered ready-to-use
+            Nordic modular houses
           </span>
         </Link>
 
@@ -61,11 +49,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm md:text-base font-medium transition ${
-                pathname === item.href
-                  ? "text-[#2F3E2F] border-b-2 border-[#2F3E2F]"
-                  : "text-[#2F3E2F]/70 hover:text-[#2F3E2F]"
-              }`}
+              className={`text-sm md:text-base font-medium transition ${pathname === item.href ? "text-[#2F3E2F] border-b-2 border-[#2F3E2F]" : "text-[#2F3E2F]/70 hover:text-[#2F3E2F]"}`}
             >
               {item.label}
             </Link>
@@ -90,11 +74,7 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`block text-base font-medium ${
-                    pathname === item.href
-                      ? "text-[#2F3E2F]"
-                      : "text-[#2F3E2F]/70 hover:text-[#2F3E2F]"
-                  }`}
+                  className={`block text-base font-medium ${pathname === item.href ? "text-[#2F3E2F]" : "text-[#2F3E2F]/70 hover:text-[#2F3E2F]"}`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}

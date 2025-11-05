@@ -7,6 +7,7 @@ export default function Contact() {
   const forestGreen = "#2F3E2F";
   const beige = "#f5f0e6";
   const [offsetY, setOffsetY] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setOffsetY(window.scrollY);
@@ -20,9 +21,30 @@ export default function Contact() {
     border: `1px solid ${forestGreen}`,
   };
 
+ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  setLoading(true);
+
+  const form = e.currentTarget;
+
+  const name = (form.elements.namedItem("Name") as HTMLInputElement)?.value;
+  const email = (form.elements.namedItem("Email") as HTMLInputElement)?.value;
+  const message = (form.elements.namedItem("Message") as HTMLTextAreaElement)?.value;
+
+  await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, message }),
+  });
+
+  setLoading(false);
+  alert("Message sent!");
+  form.reset();
+}
+
   return (
     <section className="relative text-center overflow-hidden min-h-screen w-full">
-      {/* Parallax bakgrund */}
+      {/* Parallax background */}
       <div
         className="absolute inset-0 -z-10 bg-cover bg-center"
         style={{
@@ -37,7 +59,7 @@ export default function Contact() {
       <div className="relative z-10 mt-32 px-4 md:px-0">
         <Header />
 
-        {/* Rubrik */}
+        {/* Heading */}
         <div className="mb-8 mt-8">
           <h1
             className="text-3xl md:text-4xl font-semibold mb-3"
@@ -60,18 +82,16 @@ export default function Contact() {
           />
         </div>
 
-        {/* Introtext */}
+        {/* Intro text */}
         <p className="max-w-xl mx-auto mb-8 text-lg leading-relaxed text-gray-100">
           Reach out to us for inquiries, pricing, or to find your perfect modular home.
           Our team is happy to guide you through options and answer any questions.
         </p>
 
-        {/* Kontaktformulär */}
+        {/* Contact form */}
         <form
+          onSubmit={handleSubmit}
           className="flex flex-col gap-4 max-w-md mx-auto text-left bg-white/70 backdrop-blur-md p-6 rounded-2xl shadow-lg"
-          action="mailto:klaramodules@gmail.com"
-          method="POST"
-          encType="text/plain"
         >
           <input
             type="text"
@@ -94,12 +114,14 @@ export default function Contact() {
             rows={5}
             required
           />
+
           <button
             type="submit"
-            className="py-3 px-6 rounded-lg font-semibold shadow-sm transition hover:scale-105 hover:shadow-lg mx-auto"
+            disabled={loading}
+            className="py-3 px-6 rounded-lg font-semibold shadow-sm transition hover:scale-105 hover:shadow-lg mx-auto disabled:opacity-60"
             style={buttonStyle}
           >
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </form>
 
