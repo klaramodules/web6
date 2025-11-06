@@ -1,19 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Header from "./Header";
 import { ShoppingCart, Factory, Truck, Plug } from "lucide-react";
 
 export default function Home() {
-  const [offsetY, setOffsetY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setOffsetY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const forestGreen = "#2F3E2F";
   const beige = "#f5f0e6";
 
@@ -48,23 +39,19 @@ export default function Home() {
   };
 
   return (
-   <section className="relative text-center overflow-hidden h-[100vh] md:min-h-screen w-full">
+    <section
+      className="
+        relative text-center
+        w-full min-h-screen
+        bg-cover bg-center bg-no-repeat
+      "
+      style={{ backgroundImage: "url('/bakgrund2.png')" }}
+    >
+      <div className="absolute inset-0 bg-black/40" />
 
-  <div
-    className="absolute inset-0 -z-10 bg-cover bg-[center_45%] md:bg-center bg-no-repeat"
-    style={{
-      backgroundImage: "url('/bakgrund2.png')",
-      transform: `translateY(${offsetY * 0.25}px)`
-    }}
-  />
+      <div className="relative z-10 pt-32 px-4">
+        <Header />
 
-  <div className="absolute inset-0 bg-black/40 -z-10" />
-
-  <div className="relative z-10 mt-32 px-4 overflow-visible">
-    <Header />
-
-
-        {/* Rubrik */}
         <div className="mb-10 text-center">
           <h1
             className="text-3xl md:text-4xl font-semibold mb-4"
@@ -97,10 +84,9 @@ export default function Home() {
           Each home is built by experienced Finnish housebuilders, completed in the factory, and transported by truck to your site — where it’s lifted into place and connected to power and water.
         </p>
         <p className="max-w-xl mx-auto mb-8 text-lg leading-relaxed text-gray-100">
-          No construction hassle, no hidden steps. Just timeless Nordic quality, sustainable materials, and homes built to last — ready for modern living.
+          No construction hassle, no hidden steps. Just timeless Nordic quality.
         </p>
 
-        {/* Get an Offer */}
         <div className="flex justify-center mb-6">
           <Link
             href="/contact"
@@ -111,7 +97,6 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* How It Works */}
         <section className="py-16 px-6 md:px-0 bg-transparent">
           <div className="max-w-5xl mx-auto text-center">
             <h2
@@ -123,41 +108,24 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               {steps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center text-center">
+                <div
+                  key={index}
+                  className="flex flex-col items-center text-center"
+                >
                   <div
                     className="flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-md"
                     style={{ backgroundColor: beige, color: forestGreen }}
                   >
                     {step.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-100">{step.title}</h3>
-                  <p className="text-gray-200 text-base leading-relaxed">{step.text}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-100">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-200 text-base leading-relaxed">
+                    {step.text}
+                  </p>
                 </div>
               ))}
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/concept"
-                className="inline-block font-semibold py-3 px-8 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg"
-                style={buttonStyle}
-              >
-                Our Concept
-              </Link>
-              <Link
-                href="/howitworks"
-                className="inline-block font-semibold py-3 px-8 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg"
-                style={buttonStyle}
-              >
-                How It Works
-              </Link>
-              <Link
-                href="/about"
-                className="inline-block font-semibold py-3 px-8 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg"
-                style={buttonStyle}
-              >
-                About Us
-              </Link>
             </div>
           </div>
         </section>
