@@ -9,7 +9,7 @@ export async function POST(req) {
 
     // Send email via Resend
     await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+      from: "Klara Nordic Modules <noreply@klaramodules.com>",
       to: "klaramodules@gmail.com",
       subject: "New Contact Form Submission",
       html: `
