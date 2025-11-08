@@ -39,28 +39,27 @@ export default function Concept() {
 
 {/* Intro-text */}
 <section className="max-w-3xl mx-auto mb-12">
-<div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-{/* Text */}
-<p className="md:w-3/4 text-lg leading-relaxed text-gray-700">
-When you choose a Klara modular home, you’re choosing more than a building —
-you’re choosing a way of living rooted in Nordic craftsmanship, natural
-materials, and Finnish reliability. Our homes are built in Finland and
-delivered ready-to-use across Europe, combining durability, design, and
-everyday comfort.
-</p>
+  <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+    {/* Text */}
+    <p className="md:w-3/4 text-lg leading-relaxed text-gray-700">
+      When you choose a Klara modular home, you’re choosing more than a building —
+      you’re choosing a way of living rooted in Nordic craftsmanship, natural
+      materials, and Finnish reliability. Our homes are built in Finland and
+      delivered ready-to-use across Europe, combining durability, design, and
+      everyday comfort.
+    </p>
 
-
-{/* Macro Image */}
-<div className="md:w-1/4 w-full flex justify-center">
-<Image
-src="/bild1.jpg"
-alt="Macro view"
-width={400}
-height={250}
-className="rounded-lg shadow-lg object-cover h-auto max-h-[200px]"
-/>
-</div>
-</div>
+    {/* Bild */}
+    <div className="md:w-1/4 w-full flex justify-center">
+      <Image
+        src="/bild1.jpg"
+        alt="Macro view"
+        width={400}
+        height={250}
+        className="rounded-lg shadow-lg object-cover h-auto max-h-[150px]"
+      />
+    </div>
+  </div>
 </section>
         
 
