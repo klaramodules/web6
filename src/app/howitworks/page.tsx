@@ -37,7 +37,7 @@ export default function HowItWorksPage() {
     { src: "/fasad1.png", alt: "Facade 1" },
     { src: "/fasad2.png", alt: "Facade 2" },
     { src: "/fasad3.png", alt: "Facade 3" },
-    { src: "/floorplan1.png", alt: "Floorplan" },
+    { src: "/floorplan2.png", alt: "Floorplan" },
   ];
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
