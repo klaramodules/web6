@@ -36,54 +36,49 @@ export default function AboutPage() {
           />
         </section>
 
-        {/* Textinnehåll */}
+        {/* Text */}
         <section className="max-w-3xl mx-auto text-center mb-16 px-6 md:px-0">
+
           <p
             className="text-lg leading-relaxed mb-6 text-gray-800"
             style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
           >
-            Klara is a newly founded family company with a clear mission — to make
-            owning a high-quality modular home simple, sustainable, and accessible.
+            Klara is a family company rooted in the Jakobstad region of Ostrobothnia — a place known for its boatbuilding heritage, entrepreneurship, and skilled craftsmen. This culture of precision and practical problem-solving shapes how we build.
           </p>
 
           <p
             className="text-lg leading-relaxed mb-6 text-gray-800"
             style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
           >
-            Although our company is young, we collaborate with experienced Finnish
-            builders and craftsmen who work according to the highest standards of
-            quality and precision. Every home is built with care, using durable
-            materials and Nordic craftsmanship that stands the test of time.
+            <strong>Our mission is to make Finnish craftsmanship and building excellence accessible across Europe.</strong>
           </p>
 
           <p
             className="text-lg leading-relaxed mb-6 text-gray-800"
             style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
           >
-            Our goal is to make Finnish craftsmanship and building excellence
-            accessible across Europe — exporting the know-how and quality of
-            Finnish construction without flying builders across the continent.
-            Each Klara home is designed and built in Finland, then delivered
-            ready-to-use, bringing Nordic building tradition to new markets in an
-            efficient and sustainable way.
+            Although Klara is young, we collaborate with experienced Finnish builders and craftsmen who work with a straightforward Nordic mindset: do the job properly, use good materials, and keep things simple. Each home is built with care using natural, durable materials that ensure healthy indoor air and reflect Nordic quality.
           </p>
 
           <p
             className="text-lg leading-relaxed mb-6 text-gray-800"
             style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
           >
-            Our team combines design, practicality, and reliability — merging the
-            warmth of a family business with the professionalism of Finland’s most
-            trusted builders. We believe in honest partnerships, transparent
-            communication, and homes that are made to last.
+            Every Klara home is designed and manufactured in Finland, in cooperation with Walltec Finland Ab — a trusted timber-element producer that shares our appreciation for solid construction and clean craftsmanship. Instead of flying builders across the continent, we export what truly matters: know-how, reliability, and the steady quality of Finnish construction.
+          </p>
+
+          <p
+            className="text-lg leading-relaxed mb-6 text-gray-800"
+            style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+          >
+            As a family-run company, we value honesty, transparency, and clear communication. We aim to create homes that are built to last — offering long-term comfort, durability, and simplicity for modern living.
           </p>
 
           <p
             className="text-lg leading-relaxed text-gray-800"
             style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
           >
-            Klara is more than a name — it’s our promise: clear processes,
-            transparent quality, and living made simple.
+            Klara is more than a name — it is our promise: clear processes, reliable quality, and living made simple.
           </p>
         </section>
 

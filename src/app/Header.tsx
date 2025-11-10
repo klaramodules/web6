@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-[#f7f3eb] border-b border-[#2F3E2F]/25 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-14 md:h-14 px-3 md:px-8">
+      <div className="w-full flex items-center justify-between h-14 md:h-14 px-3 md:px-6 lg:px-12">
 
         {/* LOGO + TAGLINE */}
         <Link href="/" className="flex items-center gap-2 md:gap-3">
