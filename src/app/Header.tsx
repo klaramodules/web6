@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -17,27 +16,36 @@ export default function Header() {
     { href: "/contact", label: "Contact Us" },
   ];
 
-  const mossGreen = "#2F3E2F";
+  const mossGreenTransparent = "rgba(47,62,47,0.48)"; // mörkare / mer markerad
+  const beige = "#f7f3eb";
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#f7f3eb] border-b border-[#2F3E2F]/25 z-50">
+    <header
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md shadow-md"
+      style={{
+        backgroundColor: mossGreenTransparent,
+        boxShadow: "0 4px 12px rgba(0,0,0,0.18)",
+      }}
+    >
       <div className="w-full flex items-center justify-between h-14 md:h-14 px-3 md:px-6 lg:px-12">
-
         {/* LOGO + TAGLINE */}
         <Link href="/" className="flex items-center gap-2 md:gap-3">
           <div className="flex-shrink-0">
             <Image
-              src="/logo1.png"
+              src="/logo4.png"
               alt="Logo"
               width={60}
               height={60}
               className="object-contain w-[55px] h-[55px] md:w-[65px] md:h-[65px]"
             />
           </div>
-
           <span
             className="text-xs md:text-sm font-light leading-tight max-w-[180px] md:max-w-xs overflow-hidden whitespace-nowrap text-ellipsis"
-            style={{ color: mossGreen, fontFamily: "'Outfit','Inter',sans-serif" }}
+            style={{
+              color: beige,
+              fontFamily: "'Outfit','Inter',sans-serif",
+              textShadow: "1px 1px 2px rgba(0,0,0,0.15)",
+            }}
           >
             Nordic modular houses
           </span>
@@ -49,7 +57,11 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm md:text-base font-medium transition ${pathname === item.href ? "text-[#2F3E2F] border-b-2 border-[#2F3E2F]" : "text-[#2F3E2F]/70 hover:text-[#2F3E2F]"}`}
+              className={`text-sm md:text-base font-medium transition ${
+                pathname === item.href
+                  ? "text-[#f7f3eb] border-b-2 border-[#f7f3eb]/60"
+                  : "text-[#f7f3eb]/80 hover:text-[#f7f3eb]"
+              }`}
             >
               {item.label}
             </Link>
@@ -59,7 +71,7 @@ export default function Header() {
         {/* MOBILE HAMBURGER */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-3xl font-bold text-[#2F3E2F]"
+          className="md:hidden text-3xl font-bold text-[#f7f3eb]"
           aria-label="Toggle menu"
         >
           {menuOpen ? "✕" : "☰"}
@@ -68,13 +80,17 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <nav className="md:hidden bg-[#f7f3eb] border-t border-[#2F3E2F]/25">
+        <nav className="md:hidden" style={{ backgroundColor: mossGreenTransparent }}>
           <ul className="flex flex-col gap-3 p-4">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`block text-base font-medium ${pathname === item.href ? "text-[#2F3E2F]" : "text-[#2F3E2F]/70 hover:text-[#2F3E2F]"}`}
+                  className={`block text-base font-medium ${
+                    pathname === item.href
+                      ? "text-[#f7f3eb]"
+                      : "text-[#f7f3eb]/80 hover:text-[#f7f3eb]"
+                  }`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}

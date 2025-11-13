@@ -51,13 +51,13 @@ export default function Concept() {
 
     {/* Bild */}
     <div className="md:w-1/4 w-full flex justify-center">
-      <Image
-        src="/bild1.jpg"
-        alt="Macro view"
-        width={400}
-        height={250}
-        className="rounded-lg shadow-lg object-cover h-auto max-h-[150px]"
-      />
+    <Image
+  src="/bild3.jpg"
+  alt="Macro view"
+  width={600}
+  height={400}
+  className="rounded-lg shadow-lg object-cover h-auto max-h-[220px] md:max-h-[320px]"
+/>
     </div>
   </div>
 </section>
@@ -116,69 +116,96 @@ export default function Concept() {
             </p>
           </div>
 
-          <div>
-            <h2 className="text-2xl font-semibold mb-3" style={{ color: forestGreen, fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-              What You Get
-            </h2>
-            <ul className="list-disc ml-6 space-y-2">
-              <li>A home built from honest, natural materials</li>
-              <li>Nordic durability designed for European climates</li>
-              <li>Finnish craftsmanship with steady, dependable quality</li>
-              <li>A fully finished living space delivered ready-to-use</li>
-              <li>Flexibility to adapt, relocate, or resell</li>
-            </ul>
-            <p className="mt-4">
-              Klara homes are made to last — built with integrity, delivered with care, and
-              designed to bring you long-term comfort and value.
-            </p>
-          </div>
+          <div className="flex flex-col md:flex-row items-start md:items-stretch gap-6 my-8">
+  {/* Bild till vänster */}
+  <div className="md:w-1/3 w-full flex-shrink-0">
+    <Image
+      src="/bild4.jpg"
+      alt="Illustration"
+      width={400}
+      height={400}
+      className="rounded-lg shadow-lg object-cover w-full h-full"
+    />
+  </div>
+
+  {/* Text till höger */}
+  <div className="md:w-2/3 w-full">
+    <h2
+      className="text-2xl font-semibold mb-3"
+      style={{ color: forestGreen, fontFamily: "'Outfit', 'Inter', sans-serif" }}
+    >
+      What You Get
+    </h2>
+    <ul className="list-disc ml-6 space-y-2">
+      <li>A home built from honest, natural materials</li>
+      <li>Nordic durability designed for European climates</li>
+      <li>Finnish craftsmanship with steady, dependable quality</li>
+      <li>A fully finished living space delivered ready-to-use</li>
+      <li>Flexibility to adapt, relocate, or resell</li>
+    </ul>
+    <p className="mt-4">
+      Klara homes are made to last — built with integrity, delivered with care, and
+      designed to bring you long-term comfort and value.
+    </p>
+  </div>
+</div>
         </section>
 
         {/* Pitch-sektioner: For Investors / Homeowners / Tiny House Enthusiasts */}
-        <section className="max-w-5xl mx-auto grid gap-10 md:gap-12 md:grid-cols-3 py-16 px-4 md:px-0">
-          {[
-            {
-              title: "For Investors",
-              text: `Klara offers plug & play modular homes built with Finnish quality and designed
-              for efficient, standard trailer transport — a unique logistics advantage that
-              reduces cost and complexity. The European small home market is expanding
-              rapidly, driven by the demand for flexible and sustainable living solutions.
-              Our scalable business model is based on standardized home types, clear margins,
-              and low production risk. We invite investors to join us early in a growing
-              export venture with strong demand and a clear path to profitability.`,
-            },
-            {
-              title: "For Homeowners",
-              text: `Dreaming of extra space — without the hassle of construction or permits?
-              Our ready-made modular homes are delivered straight to your property, fully
-              finished and ready to use. No need for contractors or long building projects —
-              simply choose your model, prepare your site, and move in. Finnish craftsmanship,
-              smart layouts, and timeless design make it easy to create your perfect guest
-              house, studio, or rental cabin.`,
-            },
-            {
-              title: "For Tiny House Enthusiasts",
-              text: `Klara homes are made for those who value freedom, simplicity, and sustainability.
-              Built in Finland with precision and care, our tiny houses can be placed almost
-              anywhere — by the sea, in the forest, or in the mountains. Choose an off-grid
-              model with solar power and independent water solutions for complete autonomy.
-              Designed for life on your terms — ready, mobile, and built to last.`,
-            },
-          ].map((section, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl shadow-md p-8 transition-transform hover:scale-[1.01] hover:shadow-lg"
-            >
-              <h2
-                className="text-2xl font-semibold mb-4 text-center"
-                style={{ color: forestGreen, fontFamily: "'Outfit', 'Inter', sans-serif", letterSpacing: "0.3px" }}
-              >
-                {section.title}
-              </h2>
-              <p className="text-gray-700 text-base leading-relaxed">{section.text}</p>
-            </div>
-          ))}
-        </section>
+<section className="max-w-5xl mx-auto grid gap-10 md:gap-12 md:grid-cols-3 py-16 px-4 md:px-0">
+  {[
+    {
+      title: "For Investors",
+      text: `Klara offers plug & play modular homes built with Finnish quality and designed
+      for efficient, standard trailer transport — a unique logistics advantage that
+      reduces cost and complexity. The European small home market is expanding
+      rapidly, driven by the demand for flexible and sustainable living solutions.
+      Our scalable business model is based on standardized home types, clear margins,
+      and low production risk. We invite investors to join us early in a growing
+      export venture with strong demand and a clear path to profitability.`,
+    },
+    {
+      title: "For Homeowners",
+      text: `Dreaming of extra space — without the hassle of construction or permits?
+      Our ready-made modular homes are delivered straight to your property, fully
+      finished and ready to use. No need for contractors or long building projects —
+      simply choose your model, prepare your site, and move in. Finnish craftsmanship,
+      smart layouts, and timeless design make it easy to create your perfect guest
+      house, studio, or rental cabin.`,
+    },
+    {
+      title: "For Tiny House Enthusiasts",
+      text: `Klara homes are made for those who value freedom, simplicity, and sustainability.
+      Built in Finland with precision and care, our tiny houses can be placed almost
+      anywhere — by the sea, in the forest, or in the mountains. Choose an off-grid
+      model with solar power and independent water solutions for complete autonomy.
+      Designed for life on your terms — ready, mobile, and built to last.`,
+    },
+  ].map((section, i) => (
+    <div
+      key={i}
+      className="rounded-2xl shadow-md p-8 transition-transform hover:scale-[1.01] hover:shadow-lg"
+      style={{
+        backgroundColor: "rgba(47,62,47,0.38)", // matchar headern
+        color: "#f7f3eb", // beige text som header
+      }}
+    >
+      <h2
+        className="text-2xl font-semibold mb-4 text-center"
+        style={{
+          fontFamily: "'Outfit', 'Inter', sans-serif",
+          letterSpacing: "0.3px",
+        }}
+      >
+        {section.title}
+      </h2>
+      <p className="text-base leading-relaxed">
+        {section.text}
+      </p>
+    </div>
+  ))}
+</section>
+
 
         {/* Gallery */}
         <section className="max-w-5xl mx-auto flex flex-col items-center space-y-10 pb-20">

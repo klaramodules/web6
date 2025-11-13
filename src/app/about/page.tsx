@@ -38,7 +38,6 @@ export default function AboutPage() {
 
         {/* Text */}
         <section className="max-w-3xl mx-auto text-center mb-16 px-6 md:px-0">
-
           <p
             className="text-lg leading-relaxed mb-6 text-gray-800"
             style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
@@ -52,34 +51,50 @@ export default function AboutPage() {
           >
             <strong>Our mission is to make Finnish craftsmanship and building excellence accessible across Europe.</strong>
           </p>
+        </section>
 
-          <p
-            className="text-lg leading-relaxed mb-6 text-gray-800"
-            style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-          >
-            Although Klara is young, we collaborate with experienced Finnish builders and craftsmen who work with a straightforward Nordic mindset: do the job properly, use good materials, and keep things simple. Each home is built with care using natural, durable materials that ensure healthy indoor air and reflect Nordic quality.
-          </p>
+        {/* Mission segment med bild till vänster och text till höger */}
+        <section className="max-w-5xl mx-auto mb-16 px-6 md:px-0">
+          <div className="flex flex-col md:flex-row items-stretch gap-6">
+            {/* Bild till vänster */}
+            <div className="md:w-1/3 w-full flex-shrink-0">
+              <div className="rounded-lg shadow-lg overflow-hidden h-full">
+                <img
+                  src="/bild5.jpg"
+                  alt="Our mission illustration"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
 
-          <p
-            className="text-lg leading-relaxed mb-6 text-gray-800"
-            style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-          >
-            Every Klara home is designed and manufactured in Finland, in cooperation with Walltec Finland Ab — a trusted timber-element producer that shares our appreciation for solid construction and clean craftsmanship. Instead of flying builders across the continent, we export what truly matters: know-how, reliability, and the steady quality of Finnish construction.
-          </p>
-
-          <p
-            className="text-lg leading-relaxed mb-6 text-gray-800"
-            style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-          >
-            As a family-run company, we value honesty, transparency, and clear communication. We aim to create homes that are built to last — offering long-term comfort, durability, and simplicity for modern living.
-          </p>
-
-          <p
-            className="text-lg leading-relaxed text-gray-800"
-            style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-          >
-            Klara is more than a name — it is our promise: clear processes, reliable quality, and living made simple.
-          </p>
+            {/* Text till höger */}
+            <div className="md:w-2/3 w-full flex flex-col justify-between text-left">
+              <p
+                className="text-lg leading-relaxed mb-4 text-gray-800"
+                style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+              >
+                Although Klara is young, we collaborate with experienced Finnish builders and craftsmen who work with a straightforward Nordic mindset: do the job properly, use good materials, and keep things simple. Each home is built with care using natural, durable materials that ensure healthy indoor air and reflect Nordic quality.
+              </p>
+              <p
+                className="text-lg leading-relaxed mb-4 text-gray-800"
+                style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+              >
+                Every Klara home is designed and manufactured in Finland, in cooperation with Walltec Finland Ab — a trusted timber-element producer that shares our appreciation for solid construction and clean craftsmanship. Instead of flying builders across the continent, we export what truly matters: know-how, reliability, and the steady quality of Finnish construction.
+              </p>
+              <p
+                className="text-lg leading-relaxed mb-4 text-gray-800"
+                style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+              >
+                As a family-run company, we value honesty, transparency, and clear communication. We aim to create homes that are built to last — offering long-term comfort, durability, and simplicity for modern living.
+              </p>
+              <p
+                className="text-lg leading-relaxed text-gray-800"
+                style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+              >
+                Klara is more than a name — it is our promise: clear processes, reliable quality, and living made simple.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* Footer */}

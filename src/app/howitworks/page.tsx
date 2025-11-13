@@ -3,10 +3,12 @@
 import Header from "../Header";
 import { useState } from "react";
 import { ShoppingCart, Factory, Truck, Plug, X, ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
 
 export default function HowItWorksPage() {
   const forestGreen = "#2F3E2F";
-  const beige = "#f5f0e6";
+  const mossGreenTransparent = "rgba(47,62,47,0.38)";
+  const beige = "#f7f3eb";
 
   const steps = [
     {
@@ -30,8 +32,6 @@ export default function HowItWorksPage() {
       text: "Upon arrival, your home is lifted into place and connected to electricity and water. Within just a few hours, your Klara module is fully ready — step inside and start living.",
     },
   ];
-
-  /* ---- IMAGE GALLERY ---- */
 
   const images = [
     { src: "/fasad1.png", alt: "Facade 1" },
@@ -58,13 +58,13 @@ export default function HowItWorksPage() {
   };
 
   return (
-    <section className="relative text-center overflow-hidden min-h-screen w-full bg-[#f5f0e6]">
+    <section className="relative text-center overflow-hidden w-full bg-[#f5f0e6]">
       <div className="absolute inset-0 -z-10 bg-[#f5f0e6]" />
 
       <div className="relative z-10 mt-32 px-4 md:px-0">
         <Header />
 
-        {/* Rubrik */}
+        {/* Main Title */}
         <section className="max-w-5xl mx-auto text-center mt-8 mb-12">
           <h1
             className="text-3xl md:text-4xl font-semibold mb-4"
@@ -78,12 +78,12 @@ export default function HowItWorksPage() {
             How It Works
           </h1>
           <div
-            className="mx-auto"
+            className="mx-auto mb-8"
             style={{ width: "220px", height: "2px", backgroundColor: forestGreen }}
           />
         </section>
 
-        {/* Intro */}
+        {/* Intro Text */}
         <p
           className="max-w-2xl mx-auto mb-12 text-lg leading-relaxed text-gray-800"
           style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
@@ -95,6 +95,20 @@ export default function HowItWorksPage() {
           kitchen, bathroom, interior doors, and essential fittings are all included.
         </p>
 
+        {/* Large Image */}
+        <div className="w-full flex justify-center mb-12">
+          <div
+            className="rounded-lg shadow-lg overflow-hidden"
+            style={{ width: "100%", maxWidth: "800px", height: "auto" }}
+          >
+            <img
+              src="/bild6.jpg"
+              alt="How it works illustration"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+
         {/* Steps */}
         <section className="max-w-5xl mx-auto py-12 px-6 md:px-0">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -105,9 +119,9 @@ export default function HowItWorksPage() {
               >
                 <div
                   className="flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-md"
-                  style={{ backgroundColor: beige }}
+                  style={{ backgroundColor: mossGreenTransparent }}
                 >
-                  {step.icon}
+                  {React.cloneElement(step.icon, { color: beige })}
                 </div>
 
                 <h3
@@ -130,36 +144,30 @@ export default function HowItWorksPage() {
 
         {/* IMAGE GALLERY */}
         <section className="max-w-5xl mx-auto pb-20 px-4 md:px-0">
-  <h2
-    className="text-2xl font-semibold mb-6"
-    style={{
-      color: forestGreen,
-      fontFamily: "'Outfit', 'Inter', sans-serif",
-    }}
-  >
-    Model Gallery
-  </h2>
+          <h2
+            className="text-2xl font-semibold mb-6"
+            style={{ color: forestGreen, fontFamily: "'Outfit', 'Inter', sans-serif" }}
+          >
+            Model Gallery
+          </h2>
 
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-    {images.map((img, index) => (
-      <div
-        key={index}
-        className="bg-white rounded-lg shadow-md flex items-center justify-center overflow-hidden cursor-pointer hover:opacity-90 transition"
-        style={{
-          width: "100%",
-          height: "160px",
-        }}
-        onClick={() => openImage(index)}
-      >
-        <img
-          src={img.src}
-          alt={img.alt}
-          className="max-w-full max-h-full object-contain"
-        />
-      </div>
-    ))}
-  </div>
-</section>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {images.map((img, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md flex items-center justify-center overflow-hidden cursor-pointer hover:opacity-90 transition"
+                style={{ width: "100%", height: "160px" }}
+                onClick={() => openImage(index)}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* MODAL */}
         {selectedIndex !== null && (
@@ -177,10 +185,7 @@ export default function HowItWorksPage() {
               <X size={36} />
             </button>
 
-            <button
-              className="absolute left-6 text-white"
-              onClick={showPrev}
-            >
+            <button className="absolute left-6 text-white" onClick={showPrev}>
               <ChevronLeft size={48} />
             </button>
 
@@ -190,10 +195,7 @@ export default function HowItWorksPage() {
               className="max-h-[85vh] max-w-[90vw] rounded shadow-lg"
             />
 
-            <button
-              className="absolute right-6 text-white"
-              onClick={showNext}
-            >
+            <button className="absolute right-6 text-white" onClick={showNext}>
               <ChevronRight size={48} />
             </button>
           </div>

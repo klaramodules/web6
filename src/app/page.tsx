@@ -44,9 +44,9 @@ export default function Home() {
         className="relative text-center w-full min-h-screen bg-center bg-no-repeat"
         style={{
           backgroundImage: "url('/bakgrund2.png')",
-          backgroundSize: "cover", // desktop: cover full width
-          backgroundPosition: "center top", // start from top
-          backgroundAttachment: "fixed", // keeps image static while scrolling
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          backgroundAttachment: "fixed",
         }}
       >
         <div className="absolute inset-0 bg-black/40" />
@@ -89,16 +89,18 @@ export default function Home() {
             No construction hassle, no hidden steps. Just timeless Nordic quality.
           </p>
 
-          <div className="flex justify-center mb-6">
+          {/* 🔘 Första knappen – Get an Offer */}
+          <div className="flex justify-center mb-10">
             <Link
               href="/contact"
-              className="inline-block font-semibold py-3 px-10 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg"
-              style={buttonStyle}
+              className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
+              style={{ ...buttonStyle, width: "220px" }}
             >
               Get an Offer
             </Link>
           </div>
 
+          {/* 🔹 How It Works Section */}
           <section className="py-16 px-6 md:px-0 bg-transparent">
             <div className="max-w-5xl mx-auto text-center">
               <h2
@@ -132,17 +134,47 @@ export default function Home() {
             </div>
           </section>
 
+          {/* 🔘 Tre knappar under How It Works, ovanför footern */}
+          <div className="flex flex-col items-center mt-6 mb-12">
+            <div className="flex justify-center gap-6 flex-wrap">
+              <Link
+                href="/concept"
+                className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
+                style={{ ...buttonStyle, width: "220px" }}
+              >
+                Our Concept
+              </Link>
+
+              <Link
+                href="/howitworks"
+                className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
+                style={{ ...buttonStyle, width: "220px" }}
+              >
+                How It Works
+              </Link>
+
+              <Link
+                href="/about"
+                className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
+                style={{ ...buttonStyle, width: "220px" }}
+              >
+                About Us
+              </Link>
+            </div>
+          </div>
+
+          {/* 🔚 Footer */}
           <footer className="text-gray-200 text-sm py-6">
             © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
           </footer>
         </div>
       </section>
 
-      {/* Mobile-specific background adjustments */}
+      {/* 📱 Mobilanpassning */}
       <style jsx>{`
         @media (max-width: 768px) {
           section {
-            background-size: auto 100%; /* show full height */
+            background-size: auto 100%;
             background-position: center top;
           }
         }
