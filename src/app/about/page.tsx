@@ -14,88 +14,92 @@ export default function AboutPage() {
         <Header />
 
         {/* Rubrik */}
-        <section className="max-w-3xl mx-auto text-center mt-8 mb-12">
-          <h1
-            className="text-3xl md:text-4xl font-semibold mb-4"
-            style={{
-              color: forestGreen,
-              letterSpacing: "0.5px",
-              fontFamily: "'Outfit', 'Inter', sans-serif",
-              lineHeight: "1.3",
-            }}
-          >
-            About Klara
-          </h1>
-          <div
-            className="mx-auto"
-            style={{
-              width: "220px",
-              height: "2px",
-              backgroundColor: forestGreen,
-            }}
-          />
-        </section>
+<section className="max-w-3xl mx-auto text-center mt-8 mb-12">
+  <h1
+    className="text-3xl md:text-4xl font-semibold mb-4"
+    style={{
+      color: forestGreen,
+      letterSpacing: "0.5px",
+      fontFamily: "'Outfit', 'Inter', sans-serif",
+      lineHeight: "1.3",
+    }}
+  >
+    About Klara
+  </h1>
+  <div
+    className="mx-auto"
+    style={{
+      width: "220px",
+      height: "2px",
+      backgroundColor: forestGreen,
+    }}
+  />
+</section>
 
-        {/* Text */}
-        <section className="max-w-3xl mx-auto text-center mb-16 px-6 md:px-0">
-          <p
-            className="text-lg leading-relaxed mb-6 text-gray-800"
-            style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-          >
-            Klara is a family company rooted in the Jakobstad region of Ostrobothnia — a place known for its boatbuilding heritage, entrepreneurship, and skilled craftsmen. This culture of precision and practical problem-solving shapes how we build.
-          </p>
+{/* Text */}
+<section className="max-w-3xl mx-auto text-center mb-16 px-6 md:px-0">
+  <p
+    className="text-lg leading-relaxed mb-6 text-gray-800"
+    style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+  >
+    Klara is a family company from the Jakobstad region of Ostrobothnia, a region known for boatbuilding, entrepreneurship, and skilled craftsmen. This tradition of precision and practical problem-solving shapes how we build.
+  </p>
 
-          <p
-            className="text-lg leading-relaxed mb-6 text-gray-800"
-            style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-          >
-            <strong>Our mission is to make Finnish craftsmanship and building excellence accessible across Europe.</strong>
-          </p>
-        </section>
+  <p
+    className="text-lg leading-relaxed mb-6 text-gray-800"
+    style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+  >
+    <strong>Our mission is to make Finnish craftsmanship and building excellence accessible across Europe.</strong>
+  </p>
+</section>
 
-        {/* Mission segment med bild till vänster och text till höger */}
-        <section className="max-w-5xl mx-auto mb-16 px-6 md:px-0">
-          <div className="flex flex-col md:flex-row items-stretch gap-6">
-            {/* Bild till vänster */}
-            <div className="md:w-1/3 w-full flex-shrink-0">
-              <div className="rounded-lg shadow-lg overflow-hidden h-full">
-                <img
-                  src="/bild5.jpg"
-                  alt="Our mission illustration"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+{/* Mission segment med bild till vänster och text till höger */}
+<section className="max-w-5xl mx-auto mb-16 px-6 md:px-0">
+  <div className="flex flex-col md:flex-row items-stretch gap-6">
+    {/* Bild till vänster */}
+    <div className="md:w-1/3 w-full flex-shrink-0">
+      <div className="rounded-lg shadow-lg overflow-hidden h-full">
+        <img
+          src="/bild5.jpg"
+          alt="Our mission illustration"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
 
-            {/* Text till höger */}
-            <div className="md:w-2/3 w-full flex flex-col justify-between text-left">
-              <p
-                className="text-lg leading-relaxed mb-4 text-gray-800"
-                style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-              >
-                Although Klara is young, we collaborate with experienced Finnish builders and craftsmen who work with a straightforward Nordic mindset: do the job properly, use good materials, and keep things simple. Each home is built with care using natural, durable materials that ensure healthy indoor air and reflect Nordic quality.
-              </p>
-              <p
-                className="text-lg leading-relaxed mb-4 text-gray-800"
-                style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-              >
-                Every Klara home is designed and manufactured in Finland, in cooperation with Walltec Finland Ab — a trusted timber-element producer that shares our appreciation for solid construction and clean craftsmanship. Instead of flying builders across the continent, we export what truly matters: know-how, reliability, and the steady quality of Finnish construction.
-              </p>
-              <p
-                className="text-lg leading-relaxed mb-4 text-gray-800"
-                style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-              >
-                As a family-run company, we value honesty, transparency, and clear communication. We aim to create homes that are built to last — offering long-term comfort, durability, and simplicity for modern living.
-              </p>
-              <p
-                className="text-lg leading-relaxed text-gray-800"
-                style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-              >
-                Klara is more than a name — it is our promise: clear processes, reliable quality, and living made simple.
-              </p>
-            </div>
-          </div>
-        </section>
+    {/* Text till höger */}
+    <div className="md:w-2/3 w-full flex flex-col justify-between text-left">
+      <p
+        className="text-lg leading-relaxed mb-4 text-gray-800"
+        style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+      >
+        Klara is a family company from the Jakobstad region of Ostrobothnia, a region known for boatbuilding, entrepreneurship, and skilled craftsmen. This tradition of precision and practical problem-solving shapes how we build.
+      </p>
+
+      <p
+        className="text-lg leading-relaxed mb-4 text-gray-800"
+        style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+      >
+        Although Klara is young, we work with experienced Finnish builders who follow a simple Nordic principle: do things properly and use materials that last. Our modules are built indoors with careful Nordic workmanship.
+      </p>
+
+      <p
+        className="text-lg leading-relaxed mb-4 text-gray-800"
+        style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+      >
+        Every Klara home is made in Finland in cooperation with Walltec Finland Ab, a trusted timber-element producer. We export what matters most: know-how, reliability, and consistent quality.
+      </p>
+
+      <p
+        className="text-lg leading-relaxed mb-4 text-gray-800"
+        style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
+      >
+        Klara means “ready” and “clear” in Swedish. More than a name, it embodies plug-&-play modules, straightforward processes, and the reliability of true Nordic quality.
+      </p>
+    </div>
+  </div>
+</section>
+
 
         {/* Footer */}
         <footer className="text-gray-700 text-sm py-6 text-center">

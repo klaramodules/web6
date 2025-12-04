@@ -89,7 +89,7 @@ export default function Concept() {
               producer that shares our commitment to durable construction and clean
               craftsmanship.
             </p>
-            <p>Learn more: https://walltec.fi</p>
+            <p>Learn more: <a href="https://walltec.fi" target="_blank" rel="noopener noreferrer">walltec.fi</a></p>
           </div>
 
           <div>
@@ -155,15 +155,13 @@ export default function Concept() {
 <section className="max-w-5xl mx-auto grid gap-10 md:gap-12 md:grid-cols-3 py-16 px-4 md:px-0">
   {[
     {
-      title: "For Investors",
-      text: `Klara offers plug & play modular homes built with Finnish quality and designed
-      for efficient, standard trailer transport — a unique logistics advantage that
-      reduces cost and complexity. The European small home market is expanding
-      rapidly, driven by the demand for flexible and sustainable living solutions.
-      Our scalable business model is based on standardized home types, clear margins,
-      and low production risk. We invite investors to join us early in a growing
-      export venture with strong demand and a clear path to profitability.`,
-    },
+  title: "For Income Creators",
+  text: `Want to earn extra income with a guest house, Airbnb, or rental cabin?
+  Klara’s ready-made modular homes make it easy. Delivered fully finished and
+  designed for efficient standard-trailer transport, they arrive quickly and
+  with low logistical hassle. Perfect for campsites, small resorts, or anyone
+  looking to add modern, comfortable Nordic-quality accommodation.`,
+},
     {
       title: "For Homeowners",
       text: `Dreaming of extra space — without the hassle of construction or permits?

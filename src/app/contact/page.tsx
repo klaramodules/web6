@@ -85,7 +85,7 @@ export default function Contact() {
 
           {/* Intro text */}
           <p className="max-w-xl mx-auto mb-8 text-lg leading-relaxed text-gray-100">
-            Reach out to us for inquiries, pricing, or to find your perfect modular home.
+            Reach out to us free of charge for inquiries, pricing, or to find your perfect modular home.
             Our team is happy to guide you through options and answer any questions.
           </p>
 
