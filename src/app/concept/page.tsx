@@ -52,7 +52,7 @@ export default function Concept() {
     {/* Bild */}
     <div className="md:w-1/4 w-full flex justify-center">
     <Image
-  src="/bild3.jpg"
+  src="/rendering1.png"
   alt="Macro view"
   width={600}
   height={400}

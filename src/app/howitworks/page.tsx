@@ -102,7 +102,7 @@ export default function HowItWorksPage() {
             style={{ width: "100%", maxWidth: "800px", height: "auto" }}
           >
             <img
-              src="/bild6.jpg"
+              src="/rendering.png"
               alt="How it works illustration"
               className="w-full h-auto object-cover"
             />
