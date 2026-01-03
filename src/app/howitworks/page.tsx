@@ -1,8 +1,14 @@
 "use client";
 
 import Header from "../Header";
-import { useState } from "react";
-import { ShoppingCart, Factory, Truck, Plug, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import {
+  ShoppingCart,
+  Factory,
+  Truck,
+  Plug,
+  X,
+} from "lucide-react";
 import React from "react";
 
 export default function HowItWorksPage() {
@@ -33,29 +39,31 @@ export default function HowItWorksPage() {
     },
   ];
 
-  const images = [
-    { src: "/fasad1.png", alt: "Facade 1" },
-    { src: "/fasad2.png", alt: "Facade 2" },
-    { src: "/fasad3.png", alt: "Facade 3" },
-    { src: "/floorplan2.png", alt: "Floorplan" },
+  const introImages = [
+    "/jrt12.jpg",
+    "/jrt8.jpg",
+    "/jrt9.jpg",
+    "/jrt11.jpg",
   ];
 
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
-  const openImage = (index: number) => setSelectedIndex(index);
-  const closeImage = () => setSelectedIndex(null);
-
-  const showPrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex - 1 + images.length) % images.length);
-  };
-
-  const showNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex + 1) % images.length);
-  };
+  /* Keyboard navigation – same as Concept page */
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setCurrentIndex(null);
+      if (currentIndex !== null) {
+        if (e.key === "ArrowRight")
+          setCurrentIndex((currentIndex + 1) % introImages.length);
+        if (e.key === "ArrowLeft")
+          setCurrentIndex(
+            (currentIndex + introImages.length - 1) % introImages.length
+          );
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [currentIndex, introImages.length]);
 
   return (
     <section className="relative text-center overflow-hidden w-full bg-[#f5f0e6]">
@@ -70,7 +78,6 @@ export default function HowItWorksPage() {
             className="text-3xl md:text-4xl font-semibold mb-4"
             style={{
               color: forestGreen,
-              letterSpacing: "0.5px",
               fontFamily: "'Outfit', 'Inter', sans-serif",
               lineHeight: "1.3",
             }}
@@ -84,30 +91,31 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Intro Text */}
-        <p
-          className="max-w-2xl mx-auto mb-12 text-lg leading-relaxed text-gray-800"
-          style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-        >
-          Ordering a Klara home is simple and transparent. We offer one optimized model — designed
-          to fit on a standard trailer, maximize interior space, and deliver the best possible price
-          without compromising Nordic quality. A fully equipped module starts from €75,000 + delivery.
-          Groundwork is not included, and transport is priced by destination. No hidden extras — the
-          kitchen, bathroom, interior doors, and essential fittings are all included.
+        <p className="max-w-2xl mx-auto mb-12 text-lg leading-relaxed text-gray-800">
+          Ordering a Klara home is simple and transparent. We offer one optimized
+          model — designed to fit on a standard trailer, maximize interior space,
+          and deliver the best possible price without compromising Nordic quality.
+          A fully equipped module starts from €75,000 + delivery.
         </p>
 
-        {/* Large Image */}
-        <div className="w-full flex justify-center mb-12">
-          <div
-            className="rounded-lg shadow-lg overflow-hidden"
-            style={{ width: "100%", maxWidth: "800px", height: "auto" }}
-          >
-            <img
-              src="/rendering.png"
-              alt="How it works illustration"
-              className="w-full h-auto object-cover"
-            />
+        {/* IMAGE GRID – SAME STYLE AS CONCEPT PAGE */}
+        <section className="max-w-4xl mx-auto mb-20 px-4">
+          <div className="grid grid-cols-2 gap-4">
+            {introImages.map((src, index) => (
+              <div
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className="group cursor-pointer overflow-hidden rounded-xl shadow-md"
+              >
+                <img
+                  src={src}
+                  alt={`Production image ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+            ))}
           </div>
-        </div>
+        </section>
 
         {/* Steps */}
         <section className="max-w-5xl mx-auto py-12 px-6 md:px-0">
@@ -124,17 +132,11 @@ export default function HowItWorksPage() {
                   {React.cloneElement(step.icon, { color: beige })}
                 </div>
 
-                <h3
-                  className="text-xl font-semibold mb-2 text-gray-900"
-                  style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-                >
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">
                   {step.title}
                 </h3>
 
-                <p
-                  className="text-gray-700 text-base leading-relaxed"
-                  style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}
-                >
+                <p className="text-gray-700 text-base leading-relaxed">
                   {step.text}
                 </p>
               </div>
@@ -142,62 +144,45 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
-        {/* IMAGE GALLERY */}
-        <section className="max-w-5xl mx-auto pb-20 px-4 md:px-0">
-          <h2
-            className="text-2xl font-semibold mb-6"
-            style={{ color: forestGreen, fontFamily: "'Outfit', 'Inter', sans-serif" }}
-          >
-            Model Gallery
-          </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {images.map((img, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow-md flex items-center justify-center overflow-hidden cursor-pointer hover:opacity-90 transition"
-                style={{ width: "100%", height: "160px" }}
-                onClick={() => openImage(index)}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* MODAL */}
-        {selectedIndex !== null && (
+        {/* FULLSCREEN MODAL – SAME AS CONCEPT */}
+        {currentIndex !== null && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-            onClick={closeImage}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+            onClick={() => setCurrentIndex(null)}
           >
-            <button
-              className="absolute top-6 right-6 text-white"
-              onClick={(e) => {
-                e.stopPropagation();
-                closeImage();
-              }}
+            <div
+              className="relative max-w-[90vw] max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X size={36} />
-            </button>
+              <img
+                src={introImages[currentIndex]}
+                alt="Full view"
+                className="rounded-2xl shadow-2xl object-contain max-h-[90vh]"
+              />
 
-            <button className="absolute left-6 text-white" onClick={showPrev}>
-              <ChevronLeft size={48} />
-            </button>
+              <button
+                onClick={() =>
+                  setCurrentIndex(
+                    (currentIndex + introImages.length - 1) %
+                      introImages.length
+                  )
+                }
+                className="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
+              >
+                ‹
+              </button>
 
-            <img
-              src={images[selectedIndex].src}
-              alt={images[selectedIndex].alt}
-              className="max-h-[85vh] max-w-[90vw] rounded shadow-lg"
-            />
-
-            <button className="absolute right-6 text-white" onClick={showNext}>
-              <ChevronRight size={48} />
-            </button>
+              <button
+                onClick={() =>
+                  setCurrentIndex(
+                    (currentIndex + 1) % introImages.length
+                  )
+                }
+                className="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
+              >
+                ›
+              </button>
+            </div>
           </div>
         )}
 
