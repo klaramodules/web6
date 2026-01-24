@@ -83,7 +83,9 @@ export default function Home() {
             Klara makes Finnish craftsmanship accessible across Europe.
           </p>
           <p className="max-w-xl mx-auto mb-4 text-lg leading-relaxed text-gray-100">
-            Each home is built by experienced Finnish housebuilders, completed in the factory, and transported by truck to your site — where it’s lifted into place and connected to power and water.
+            Each home is built by experienced Finnish housebuilders, completed in
+            the factory, and transported by truck to your site — where it’s lifted
+            into place and connected to power and water.
           </p>
           <p className="max-w-xl mx-auto mb-8 text-lg leading-relaxed text-gray-100">
             No construction hassle, no hidden steps. Just timeless Nordic quality.
@@ -134,7 +136,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 🔘 Tre knappar under How It Works, ovanför footern */}
+          {/* 🔘 Fyra knappar under How It Works */}
           <div className="flex flex-col items-center mt-6 mb-12">
             <div className="flex justify-center gap-6 flex-wrap">
               <Link
@@ -151,6 +153,14 @@ export default function Home() {
                 style={{ ...buttonStyle, width: "220px" }}
               >
                 How It Works
+              </Link>
+
+              <Link
+                href="/modelrange"
+                className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
+                style={{ ...buttonStyle, width: "220px" }}
+              >
+                Model Range
               </Link>
 
               <Link

@@ -95,7 +95,7 @@ export default function HowItWorksPage() {
           Ordering a Klara home is simple and transparent. We offer one optimized
           model — designed to fit on a standard trailer, maximize interior space,
           and deliver the best possible price without compromising Nordic quality.
-          A fully equipped module starts from €75,000 + delivery.
+          
         </p>
 
         {/* IMAGE GRID – SAME STYLE AS CONCEPT PAGE */}

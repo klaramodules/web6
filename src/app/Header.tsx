@@ -12,11 +12,12 @@ export default function Header() {
     { href: "/", label: "Home" },
     { href: "/concept", label: "Our Concept" },
     { href: "/howitworks", label: "How It Works" },
+    { href: "/modelrange", label: "Model Range" }, // 👈 NY FLiK
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact Us" },
   ];
 
-  const mossGreenTransparent = "rgba(47,62,47,0.48)"; // mörkare / mer markerad
+  const mossGreenTransparent = "rgba(47,62,47,0.48)";
   const beige = "#f7f3eb";
 
   return (
@@ -30,30 +31,30 @@ export default function Header() {
       <div className="w-full flex items-center justify-between h-14 md:h-14 px-3 md:px-6 lg:px-12">
         {/* LOGO + TAGLINE */}
         <Link
-  href="/"
-  className="flex items-center gap-2 md:gap-3 px-2 py-1 cursor-pointer select-none active:opacity-80"
->
-  <div className="flex-shrink-0">
-    <Image
-      src="/logo4.png"
-      alt="Logo"
-      width={60}
-      height={60}
-      className="object-contain w-[55px] h-[55px] md:w-[65px] md:h-[65px]"
-    />
-  </div>
+          href="/"
+          className="flex items-center gap-2 md:gap-3 px-2 py-1 cursor-pointer select-none active:opacity-80"
+        >
+          <div className="flex-shrink-0">
+            <Image
+              src="/logo4.png"
+              alt="Logo"
+              width={60}
+              height={60}
+              className="object-contain w-[55px] h-[55px] md:w-[65px] md:h-[65px]"
+            />
+          </div>
 
-  <span
-    className="text-sm md:text-base font-light leading-tight max-w-[180px] md:max-w-xs overflow-hidden whitespace-nowrap text-ellipsis"
-    style={{
-      color: beige,
-      fontFamily: "'Outfit','Inter',sans-serif",
-      textShadow: "1px 1px 2px rgba(0,0,0,0.15)",
-    }}
-  >
-    Nordic modular houses
-  </span>
-</Link>
+          <span
+            className="text-sm md:text-base font-light leading-tight max-w-[180px] md:max-w-xs overflow-hidden whitespace-nowrap text-ellipsis"
+            style={{
+              color: beige,
+              fontFamily: "'Outfit','Inter',sans-serif",
+              textShadow: "1px 1px 2px rgba(0,0,0,0.15)",
+            }}
+          >
+            Nordic modular houses
+          </span>
+        </Link>
 
         {/* DESKTOP NAV */}
         <nav className="hidden md:flex gap-6 ml-auto">
@@ -84,7 +85,10 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <nav className="md:hidden" style={{ backgroundColor: mossGreenTransparent }}>
+        <nav
+          className="md:hidden"
+          style={{ backgroundColor: mossGreenTransparent }}
+        >
           <ul className="flex flex-col gap-3 p-4">
             {navItems.map((item) => (
               <li key={item.href}>
