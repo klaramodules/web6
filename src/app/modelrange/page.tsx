@@ -35,11 +35,11 @@ export default function ModelRange() {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
   const buttonStyle = {
-    backgroundColor: "rgba(47, 62, 47, 0.6)",
-    color: beige,
-    border: `1px solid ${forestGreen}`,
-    backdropFilter: "blur(4px)",
-  };
+  backgroundColor: "rgba(47, 62, 47, 0.6)",
+  color: beige,
+  border: `1px solid ${beige}`,
+  backdropFilter: "blur(4px)",
+};
 
   /* Keyboard navigation */
   useEffect(() => {
@@ -207,28 +207,53 @@ export default function ModelRange() {
         </section>
 
         {/* ===== Modal gallery ===== */}
-        {currentIndex !== null && currentImages && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
-            onClick={() => {
-              setCurrentIndex(null);
-              setCurrentImages(null);
-            }}
-          >
-            <div
-              className="relative max-w-[90vw] max-h-[90vh]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={currentImages[currentIndex]}
-                alt="Full view"
-                width={1800}
-                height={1200}
-                className="rounded-2xl shadow-2xl object-contain max-h-[90vh]"
-              />
-            </div>
-          </div>
-        )}
+{currentIndex !== null && currentImages && (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+    onClick={() => {
+      setCurrentIndex(null);
+      setCurrentImages(null);
+    }}
+  >
+    <div
+      className="relative max-w-[90vw] max-h-[90vh]"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <Image
+        src={currentImages[currentIndex]}
+        alt="Full view"
+        width={1800}
+        height={1200}
+        className="rounded-2xl shadow-2xl object-contain max-h-[90vh]"
+      />
+
+      {/* ◀ Previous */}
+      <button
+        onClick={() =>
+          setCurrentIndex(
+            (currentIndex + currentImages.length - 1) %
+              currentImages.length
+          )
+        }
+        className="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
+      >
+        ‹
+      </button>
+
+      {/* ▶ Next */}
+      <button
+        onClick={() =>
+          setCurrentIndex(
+            (currentIndex + 1) % currentImages.length
+          )
+        }
+        className="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
+      >
+        ›
+      </button>
+    </div>
+  </div>
+)}
 
         <footer className="text-gray-700 text-sm py-6 text-center">
           © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
