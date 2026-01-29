@@ -12,7 +12,7 @@ export default function Home() {
     {
       icon: <ShoppingCart size={48} strokeWidth={1.5} color={forestGreen} />,
       title: "Order Online",
-      text: "Choose your preferred Klara model and place your order directly online. Pre-designed and ready to go.",
+      text: "Choose your preferred Klara model and contact us directly online. Pre-designed and ready to go.",
     },
     {
       icon: <Factory size={48} strokeWidth={1.5} color={forestGreen} />,
@@ -54,6 +54,7 @@ export default function Home() {
         <div className="relative z-10 pt-32 px-4">
           <Header />
 
+          {/* Hero */}
           <div className="mb-10 text-center">
             <h1
               className="text-3xl md:text-4xl font-semibold mb-4"
@@ -91,8 +92,8 @@ export default function Home() {
             No construction hassle, no hidden steps. Just timeless Nordic quality.
           </p>
 
-          {/* 🔘 Första knappen – Get an Offer */}
-          <div className="flex justify-center mb-10">
+          {/* Primary CTA */}
+          <div className="flex justify-center mb-8">
             <Link
               href="/contact"
               className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
@@ -102,31 +103,48 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* 🔹 How It Works Section */}
-          <section className="py-16 px-6 md:px-0 bg-transparent">
+          {/* How It Works */}
+          <section className="py-12 px-6 md:px-0 bg-transparent">
             <div className="max-w-5xl mx-auto text-center">
               <h2
-                className="text-3xl md:text-4xl font-semibold mb-12"
+                className="text-3xl md:text-4xl font-semibold mb-8"
                 style={{ color: beige }}
               >
                 How It Works
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-6">
                 {steps.map((step, index) => (
                   <div
                     key={index}
-                    className="flex flex-col items-center text-center"
+                    className="flex flex-col items-center text-center transition-transform hover:scale-[1.02]"
                   >
-                    <div
-                      className="flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-md"
-                      style={{ backgroundColor: beige, color: forestGreen }}
-                    >
-                      {step.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2 text-gray-100">
-                      {step.title}
-                    </h3>
+                    {index === 0 ? (
+                      <Link href="/contact" className="group">
+                        <div
+                          className="flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-md transition-transform group-hover:scale-105"
+                          style={{ backgroundColor: beige }}
+                        >
+                          {step.icon}
+                        </div>
+                        <h3 className="text-xl font-semibold mb-2 text-gray-100 group-hover:underline">
+                          {step.title}
+                        </h3>
+                      </Link>
+                    ) : (
+                      <>
+                        <div
+                          className="flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-md"
+                          style={{ backgroundColor: beige }}
+                        >
+                          {step.icon}
+                        </div>
+                        <h3 className="text-xl font-semibold mb-2 text-gray-100">
+                          {step.title}
+                        </h3>
+                      </>
+                    )}
+
                     <p className="text-gray-200 text-base leading-relaxed">
                       {step.text}
                     </p>
@@ -136,8 +154,8 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 🔘 Fyra knappar under How It Works */}
-          <div className="flex flex-col items-center mt-6 mb-12">
+          {/* Secondary CTAs */}
+          <div className="flex flex-col items-center mt-2 mb-8">
             <div className="flex justify-center gap-6 flex-wrap">
               <Link
                 href="/concept"
@@ -173,14 +191,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 🔚 Footer */}
+          {/* Footer */}
           <footer className="text-gray-200 text-sm py-6">
             © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
           </footer>
         </div>
       </section>
 
-      {/* 📱 Mobilanpassning */}
+      {/* Mobile background fix */}
       <style jsx>{`
         @media (max-width: 768px) {
           section {

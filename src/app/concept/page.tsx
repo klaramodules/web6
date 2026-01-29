@@ -3,9 +3,18 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "../Header";
+import Link from "next/link";
 
 export default function Concept() {
   const forestGreen = "#2F3E2F";
+  const beige = "#f5f0e6";
+
+  const buttonStyle = {
+    backgroundColor: "rgba(47, 62, 47, 0.6)",
+    color: beige,
+    border: `1px solid ${beige}`,
+    backdropFilter: "blur(4px)",
+  };
 
   /* ===== Image gallery state ===== */
   const images = [
@@ -26,12 +35,14 @@ export default function Concept() {
         if (e.key === "ArrowRight")
           setCurrentIndex((currentIndex + 1) % images.length);
         if (e.key === "ArrowLeft")
-          setCurrentIndex((currentIndex + images.length - 1) % images.length);
+          setCurrentIndex(
+            (currentIndex + images.length - 1) % images.length
+          );
       }
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [currentIndex]);
+  }, [currentIndex, images.length]);
 
   return (
     <section className="relative text-center overflow-hidden min-h-screen w-full bg-gradient-to-b from-[#f5f0e6] to-[#e6e1d8]">
@@ -55,59 +66,72 @@ export default function Concept() {
             Finnish Precision.
           </h1>
           <div
-            className="mx-auto"
+            className="mx-auto mb-12"
             style={{ width: "220px", height: "2px", backgroundColor: forestGreen }}
           />
         </section>
 
-        {/* Intro */}
-        <section className="max-w-3xl mx-auto mb-12">
-          <div className="flex flex-col md:flex-row items-start gap-6">
-            <p className="md:w-3/4 text-lg leading-relaxed text-gray-700">
-              When you choose a Klara modular home, you choose Nordic craftsmanship,
-              natural materials, and Finnish reliability. Our homes are built in
-              Finland and delivered ready-to-use across Europe, combining durability,
-              design, and comfort.
-            </p>
-
-            <div className="md:w-1/4 w-full flex justify-center">
+        {/* Intro with jrt8 image */}
+        <section className="max-w-3xl mx-auto mb-20 text-left text-gray-700 text-lg leading-relaxed">
+          {/* Centered image */}
+          <div className="flex justify-center mb-6">
+            <div className="overflow-hidden rounded-xl shadow-md w-full md:w-2/3">
               <Image
                 src="/jrt8.jpg"
                 alt="Macro view"
-                width={600}
-                height={400}
-                className="rounded-xl shadow-lg object-cover max-h-[260px]"
+                width={500}
+                height={350}
+                className="rounded-xl object-cover w-full h-[230px]"
               />
             </div>
           </div>
+
+          {/* First paragraph */}
+          <p className="text-center mb-12">
+            When you choose a Klara modular home, you choose Nordic craftsmanship.
+          </p>
+
+          {/* Built the Nordic Way */}
+          <h2
+            className="text-2xl font-semibold mb-3"
+            style={{ color: forestGreen }}
+          >
+            Built the Nordic Way
+          </h2>
+          <p className="mb-8">
+            Our homes are built in Finland using natural materials that age
+            beautifully and perform in harsh climates. Delivered ready-to-use
+            across Europe, each home combines Finnish reliability with
+            long-lasting durability, thoughtful design, and everyday comfort.
+            No unnecessary plastics, no shortcuts — just solid construction with
+            longevity and healthy indoor air in mind.
+          </p>
+
+          {/* CTA, centered */}
+          <div className="flex justify-center mt-6">
+            <Link
+              href="/contact"
+              className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
+              style={{ ...buttonStyle, width: "260px" }}
+            >
+              Contact us
+            </Link>
+          </div>
         </section>
 
-        {/* Text Sections */}
+        {/* Finnish Precision + Images */}
         <section className="max-w-3xl mx-auto text-left mb-20 space-y-10 text-gray-700 text-lg leading-relaxed">
-          <div>
-            <h2 className="text-2xl font-semibold mb-3" style={{ color: forestGreen }}>
-              Built the Nordic Way
-            </h2>
-            <p>
-              Our homes are crafted from natural materials that age beautifully and
-              withstand harsh climates. No unnecessary plastics, no shortcuts —
-              just solid construction with longevity and healthy indoor air in mind.
-            </p>
-          </div>
-
-          {/* ===== Finnish Precision + Images ===== */}
           <div>
             <h2 className="text-2xl font-semibold mb-3" style={{ color: forestGreen }}>
               Finnish Precision, Delivered by Experts
             </h2>
-            <p>
+            <p className="mb-6">
               Our builders work with a straightforward Nordic mindset: do the job
               properly, use good materials, and keep things simple — ensuring
               consistent quality and a home that feels well-built from day one.
               The modules are manufactured in Finland by Walltec Finland Ab.
             </p>
 
-            {/* Image grid 2x3 */}
             <div className="my-8 grid grid-cols-3 gap-4">
               {images.map((src, index) => (
                 <div
@@ -127,7 +151,7 @@ export default function Concept() {
             </div>
 
             <p>
-              Learn more:{" "}
+              Learn more about our partner:{" "}
               <a
                 href="https://walltec.fi"
                 target="_blank"
@@ -139,12 +163,12 @@ export default function Concept() {
             </p>
           </div>
 
-          {/* ===== REST OF ORIGINAL CONTENT (UNCHANGED) ===== */}
+          {/* Rest of original content unchanged */}
           <div>
             <h2 className="text-2xl font-semibold mb-3" style={{ color: forestGreen }}>
               Designed for Modern Living
             </h2>
-            <p>
+            <p className="mb-12">
               Whether you want a guest house, a tiny home, or a rental property,
               Klara offers flexible solutions that fit your lifestyle. Our plug-&-play
               homes arrive fully finished, energy-efficient, and ready from day one.
@@ -156,7 +180,7 @@ export default function Concept() {
             <h2 className="text-2xl font-semibold mb-3" style={{ color: forestGreen }}>
               Adaptable for Tomorrow
             </h2>
-            <p>
+            <p className="mb-12">
               Life changes — and your Klara home can change with it. Move it to a new
               location, repurpose it, or sell it on to someone else.
             </p>
@@ -184,7 +208,7 @@ export default function Concept() {
                 <li>A fully finished living space delivered ready-to-use</li>
                 <li>Flexibility to adapt, relocate, or resell</li>
               </ul>
-              <p className="mt-4">
+              <p className="mt-4 mb-12">
                 Klara homes are made to last — built with integrity and designed
                 for long-term comfort.
               </p>
@@ -192,7 +216,7 @@ export default function Concept() {
           </div>
         </section>
 
-        {/* ===== Premium Modal ===== */}
+        {/* Premium Modal */}
         {currentIndex !== null && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
@@ -236,6 +260,15 @@ export default function Concept() {
           © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
         </footer>
       </div>
+
+      {/* Responsiv tweak */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          img[class*='object-cover'] {
+            height: 180px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

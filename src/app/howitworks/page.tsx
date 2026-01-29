@@ -2,14 +2,9 @@
 
 import Header from "../Header";
 import { useState, useEffect } from "react";
-import {
-  ShoppingCart,
-  Factory,
-  Truck,
-  Plug,
-  X,
-} from "lucide-react";
+import { ShoppingCart, Factory, Truck, Plug } from "lucide-react";
 import React from "react";
+import Link from "next/link";
 
 export default function HowItWorksPage() {
   const forestGreen = "#2F3E2F";
@@ -21,6 +16,7 @@ export default function HowItWorksPage() {
       icon: <ShoppingCart size={48} strokeWidth={1.5} color={forestGreen} />,
       title: "Order Online",
       text: "Get in touch through our contact form to request a free, no-obligation quote. After you submit your details, we’ll reach out with a personalised offer, clarify any options, and guide you through the next steps. The model is pre-designed and optimized — no complicated decisions.",
+      cta: true
     },
     {
       icon: <Factory size={48} strokeWidth={1.5} color={forestGreen} />,
@@ -39,16 +35,9 @@ export default function HowItWorksPage() {
     },
   ];
 
-  const introImages = [
-    "/jrt12.jpg",
-    "/jrt8.jpg",
-    "/jrt9.jpg",
-    "/jrt11.jpg",
-  ];
-
+  const introImages = ["/jrt12.jpg", "/jrt8.jpg", "/jrt11.jpg", "/jrt9.jpg"];
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
-  /* Keyboard navigation – same as Concept page */
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setCurrentIndex(null);
@@ -92,15 +81,14 @@ export default function HowItWorksPage() {
 
         {/* Intro Text */}
         <p className="max-w-2xl mx-auto mb-12 text-lg leading-relaxed text-gray-800">
-          Ordering a Klara home is simple and transparent. We offer one optimized
-          model — designed to fit on a standard trailer, maximize interior space,
+          Ordering a Klara home is simple and transparent. We offer optimized
+          models — designed to fit on a standard trailer, maximize interior space,
           and deliver the best possible price without compromising Nordic quality.
-          
         </p>
 
-        {/* IMAGE GRID – SAME STYLE AS CONCEPT PAGE */}
+        {/* IMAGE GRID – 4 cols desktop, 2 cols mobile */}
         <section className="max-w-4xl mx-auto mb-20 px-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {introImages.map((src, index) => (
               <div
                 key={index}
@@ -119,32 +107,39 @@ export default function HowItWorksPage() {
 
         {/* Steps */}
         <section className="max-w-5xl mx-auto py-12 px-6 md:px-0">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center text-center transition-transform hover:scale-[1.02]"
+                className="flex flex-col md:flex-row items-start md:items-center text-left md:text-left transition-transform hover:scale-[1.02]"
               >
                 <div
-                  className="flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-md"
+                  className="flex items-center justify-center w-20 h-20 rounded-full mb-4 md:mb-0 md:mr-6 flex-shrink-0"
                   style={{ backgroundColor: mossGreenTransparent }}
                 >
                   {React.cloneElement(step.icon, { color: beige })}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">
-                  {step.title}
-                </h3>
-
-                <p className="text-gray-700 text-base leading-relaxed">
-                  {step.text}
-                </p>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                    {step.cta ? (
+                      <Link href="/contact" className="hover:underline">
+                        {step.title}
+                      </Link>
+                    ) : (
+                      step.title
+                    )}
+                  </h3>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    {step.text}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* FULLSCREEN MODAL – SAME AS CONCEPT */}
+        {/* Fullscreen Modal */}
         {currentIndex !== null && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
@@ -163,8 +158,7 @@ export default function HowItWorksPage() {
               <button
                 onClick={() =>
                   setCurrentIndex(
-                    (currentIndex + introImages.length - 1) %
-                      introImages.length
+                    (currentIndex + introImages.length - 1) % introImages.length
                   )
                 }
                 className="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
@@ -191,6 +185,15 @@ export default function HowItWorksPage() {
           © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
         </footer>
       </div>
+
+      {/* Responsiv tweak */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          img[class*='object-cover'] {
+            height: 180px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
