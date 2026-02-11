@@ -27,6 +27,9 @@ export default function ModelRange() {
     "/nr2_5.jpg",
     "/nr2_6.jpg",
     "/nr2_7.jpg",
+    "/nr3_1.jpg",
+    "/nr3_2.jpg",
+    "/nr3_3.jpg",
     "/nr2_8.png",
     "/nr2_9.png",
   ];
@@ -98,7 +101,6 @@ export default function ModelRange() {
             Our modular homes are compact, energy-efficient, and fully equipped with sauna and underfloor heating. Designed and built in Finland for predictable quality and fast installation — perfect for guest houses, rental units, or full-time living.
           </p>
 
-          {/* Länkar till modeller */}
           <div className="flex justify-center gap-6 mt-4">
             <Link href="#model1" className="underline font-semibold">
               View Model 01
@@ -129,7 +131,6 @@ export default function ModelRange() {
             <li>If you have questions, don’t hesitate to <Link href="/contact" className="underline font-semibold">contact us</Link>.</li>
           </ul>
 
-          {/* Gallery */}
           <div className="grid grid-cols-3 gap-4 my-8">
             {model1Images.map((src, index) => (
               <div
@@ -151,7 +152,6 @@ export default function ModelRange() {
             ))}
           </div>
 
-          {/* CTA */}
           <div className="flex justify-center mt-8">
             <Link
               href="/contact"
@@ -183,7 +183,6 @@ export default function ModelRange() {
             <li>If you have questions, don’t hesitate to <Link href="/contact" className="underline font-semibold">contact us</Link>.</li>
           </ul>
 
-          {/* Gallery */}
           <div className="grid grid-cols-3 gap-4 my-8">
             {model2Images.map((src, index) => (
               <div
@@ -205,7 +204,6 @@ export default function ModelRange() {
             ))}
           </div>
 
-          {/* CTA */}
           <div className="flex justify-center mt-8">
             <Link
               href="/contact"
@@ -217,7 +215,6 @@ export default function ModelRange() {
           </div>
         </section>
 
-        {/* ===== Modal gallery ===== */}
         {currentIndex !== null && currentImages && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
@@ -238,7 +235,6 @@ export default function ModelRange() {
                 className="rounded-2xl shadow-2xl object-contain max-h-[90vh]"
               />
 
-              {/* ◀ Previous */}
               <button
                 onClick={() =>
                   setCurrentIndex(
@@ -251,7 +247,6 @@ export default function ModelRange() {
                 ‹
               </button>
 
-              {/* ▶ Next */}
               <button
                 onClick={() =>
                   setCurrentIndex(
