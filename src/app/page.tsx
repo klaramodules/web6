@@ -157,35 +157,19 @@ export default function Home() {
           {/* Secondary CTAs */}
           <div className="flex flex-col items-center mt-2 mb-8">
             <div className="flex justify-center gap-6 flex-wrap">
-              <Link
-                href="/concept"
-                className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
-                style={{ ...buttonStyle, width: "220px" }}
-              >
+              <Link href="/concept" className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center" style={{ ...buttonStyle, width: "220px" }}>
                 Our Concept
               </Link>
 
-              <Link
-                href="/howitworks"
-                className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
-                style={{ ...buttonStyle, width: "220px" }}
-              >
+              <Link href="/howitworks" className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center" style={{ ...buttonStyle, width: "220px" }}>
                 How It Works
               </Link>
 
-              <Link
-                href="/modelrange"
-                className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
-                style={{ ...buttonStyle, width: "220px" }}
-              >
+              <Link href="/modelrange" className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center" style={{ ...buttonStyle, width: "220px" }}>
                 Model Range
               </Link>
 
-              <Link
-                href="/about"
-                className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
-                style={{ ...buttonStyle, width: "220px" }}
-              >
+              <Link href="/about" className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center" style={{ ...buttonStyle, width: "220px" }}>
                 About Us
               </Link>
             </div>
