@@ -15,12 +15,6 @@ export default function Contact() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const buttonStyle = {
-    backgroundColor: beige,
-    color: forestGreen,
-    border: `1px solid ${forestGreen}`,
-  };
-
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
@@ -43,75 +37,86 @@ export default function Contact() {
   }
 
   return (
-    <>
-      <section className="relative text-center overflow-hidden min-h-screen w-full">
-        {/* Parallax background */}
-        <div
-          className="absolute inset-0 -z-10 bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/bakgrund2.png')",
-            transform: `translateY(${offsetY * 0.4}px)`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover", // desktop
-          }}
-        />
-        <div className="absolute inset-0 bg-black/40 -z-10" />
+    <section className="relative min-h-screen w-full overflow-hidden">
 
-        <div className="relative z-10 mt-32 px-4 md:px-0">
+      {/* BACKGROUND */}
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/bakgrund2.png')",
+          transform: `translateY(${offsetY * 0.3}px)`,
+        }}
+      />
+
+      {/* SOFT OVERLAY (less harsh than before) */}
+      <div className="absolute inset-0 bg-black/45 -z-10" />
+
+      {/* HEADER */}
+      <div className="relative z-10">
+        <div className="sticky top-0 z-50 backdrop-blur-md bg-black/10 border-b border-white/10">
           <Header />
+        </div>
 
-          {/* Heading */}
-          <div className="mb-8 mt-8">
-            <h1
-              className="text-3xl md:text-4xl font-semibold mb-3"
-              style={{
-                color: beige,
-                letterSpacing: "0.5px",
-                fontFamily: "'Outfit', 'Inter', sans-serif",
-                lineHeight: "1.2",
-              }}
-            >
-              Contact Us
-            </h1>
-            <div
-              className="mx-auto"
-              style={{
-                width: "220px",
-                height: "2px",
-                backgroundColor: beige,
-              }}
-            />
-          </div>
+        {/* CONTENT */}
+        <div className="max-w-4xl mx-auto px-6 pt-32 pb-20 text-center">
 
-          {/* Intro text */}
-          <p className="max-w-xl mx-auto mb-8 text-lg leading-relaxed text-gray-100">
+          {/* TITLE */}
+          <h1
+            className="text-3xl md:text-4xl font-semibold mb-4"
+            style={{
+              color: beige,
+              fontFamily: "'Outfit', 'Inter', sans-serif",
+            }}
+          >
+            Contact Us
+          </h1>
+
+          <div
+            className="mx-auto mb-8"
+            style={{
+              width: "120px",
+              height: "2px",
+              backgroundColor: beige,
+              opacity: 0.8,
+            }}
+          />
+
+          {/* INTRO (UNCHANGED CONTENT) */}
+          <p className="max-w-xl mx-auto mb-10 text-lg leading-relaxed text-gray-100">
             Reach out to us free of charge for inquiries, pricing, or to find your perfect modular home.
             Our team is happy to guide you through options and answer any questions.
           </p>
 
-          {/* Contact form */}
+          {/* FORM (BACK TO CLEAN CENTERED GLASS STYLE) */}
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 max-w-md mx-auto text-left bg-white/70 backdrop-blur-md p-6 rounded-2xl shadow-lg"
+            className="flex flex-col gap-4 max-w-md mx-auto text-left rounded-2xl p-6 md:p-8 shadow-2xl"
+            style={{
+              background: "rgba(255,255,255,0.10)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              backdropFilter: "blur(8px)",
+            }}
           >
             <input
               type="text"
               name="Name"
               placeholder="Name"
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#5A6B4E]/40 bg-white"
+              className="p-3 rounded-md bg-white/90 focus:outline-none"
               required
             />
+
             <input
               type="email"
               name="Email"
               placeholder="Email"
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#5A6B4E]/40 bg-white"
+              className="p-3 rounded-md bg-white/90 focus:outline-none"
               required
             />
+
             <textarea
               name="Message"
               placeholder="Message"
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#5A6B4E]/40 bg-white"
+              className="p-3 rounded-md bg-white/90 focus:outline-none"
               rows={5}
               required
             />
@@ -119,36 +124,22 @@ export default function Contact() {
             <button
               type="submit"
               disabled={loading}
-              className="py-3 px-6 rounded-lg font-semibold shadow-sm transition hover:scale-105 hover:shadow-lg mx-auto disabled:opacity-60"
-              style={buttonStyle}
+              className="py-3 px-6 rounded-lg font-semibold transition hover:scale-105 mx-auto disabled:opacity-60"
+              style={{
+                backgroundColor: beige,
+                color: forestGreen,
+              }}
             >
               {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
 
-          {/* Footer */}
-          <footer className="text-gray-100 text-sm py-6 mt-12">
+          {/* FOOTER */}
+          <footer className="text-gray-200 text-sm py-10 mt-10">
             © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
           </footer>
         </div>
-      </section>
-
-      {/* Mobile-specific styles */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          section div.absolute.inset-0.-z-10.bg-center {
-            background-size: auto 100% !important; /* full height */
-            background-position: center top !important;
-          }
-
-          /* Make form text dark for better readability on mobile */
-          form input,
-          form textarea,
-          form button {
-            color: #2f3e2f;
-          }
-        }
-      `}</style>
-    </>
+      </div>
+    </section>
   );
 }

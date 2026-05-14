@@ -8,15 +8,14 @@ import Link from "next/link";
 
 export default function HowItWorksPage() {
   const forestGreen = "#2F3E2F";
-  const mossGreenTransparent = "rgba(47,62,47,0.38)";
-  const beige = "#f7f3eb";
+  const beige = "#f5f0e6";
 
   const steps = [
     {
       icon: <ShoppingCart size={48} strokeWidth={1.5} color={forestGreen} />,
       title: "Order Online",
       text: "Get in touch through our contact form to request a free, no-obligation quote. After you submit your details, we’ll reach out with a personalised offer, clarify any options, and guide you through the next steps. The model is pre-designed and optimized — no complicated decisions.",
-      cta: true
+      cta: true,
     },
     {
       icon: <Factory size={48} strokeWidth={1.5} color={forestGreen} />,
@@ -36,164 +35,306 @@ export default function HowItWorksPage() {
   ];
 
   const introImages = ["/jrt12.jpg", "/jrt8.jpg", "/jrt11.jpg", "/jrt9.jpg"];
+
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setCurrentIndex(null);
-      if (currentIndex !== null) {
-        if (e.key === "ArrowRight")
-          setCurrentIndex((currentIndex + 1) % introImages.length);
-        if (e.key === "ArrowLeft")
-          setCurrentIndex(
-            (currentIndex + introImages.length - 1) % introImages.length
-          );
+      if (e.key === "Escape") {
+        setCurrentIndex(null);
+      }
+
+      if (e.key === "ArrowRight") {
+        setCurrentIndex((prev) => {
+          if (prev === null) return null;
+          return (prev + 1) % introImages.length;
+        });
+      }
+
+      if (e.key === "ArrowLeft") {
+        setCurrentIndex((prev) => {
+          if (prev === null) return null;
+          return (prev + introImages.length - 1) % introImages.length;
+        });
       }
     };
+
     window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [currentIndex, introImages.length]);
+
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, []);
+
+  const buttonStyle = {
+    backgroundColor: "rgba(47, 62, 47, 0.55)",
+    color: beige,
+    border: `1px solid rgba(245,240,230,0.65)`,
+    backdropFilter: "blur(8px)",
+  };
 
   return (
-    <section className="relative text-center overflow-hidden w-full bg-[#f5f0e6]">
-      <div className="absolute inset-0 -z-10 bg-[#f5f0e6]" />
+    <>
+      {/* HERO */}
+      <section
+        className="relative w-full min-h-screen overflow-hidden bg-cover bg-no-repeat bg-[60%_center] md:bg-center"
+        style={{
+          backgroundImage: "url('/1002.jpg')",
+        }}
+      >
+        {/* Desktop gradient */}
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{
+            background: `
+              linear-gradient(
+                to right,
+                rgba(15,15,15,0.58) 0%,
+                rgba(15,15,15,0.38) 30%,
+                rgba(15,15,15,0.18) 58%,
+                rgba(15,15,15,0.42) 100%
+              )
+            `,
+          }}
+        />
 
-      <div className="relative z-10 mt-32 px-4 md:px-0">
-        <Header />
+        {/* Mobile gradient */}
+        <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
 
-        {/* Main Title */}
-        <section className="max-w-5xl mx-auto text-center mt-8 mb-12">
-          <h1
-            className="text-3xl md:text-4xl font-semibold mb-4"
-            style={{
-              color: forestGreen,
-              fontFamily: "'Outfit', 'Inter', sans-serif",
-              lineHeight: "1.3",
-            }}
-          >
-            How It Works
-          </h1>
-          <div
-            className="mx-auto mb-8"
-            style={{ width: "220px", height: "2px", backgroundColor: forestGreen }}
-          />
-        </section>
+        <div className="absolute inset-0 bg-black/10" />
 
-        {/* Intro Text */}
-        <p className="max-w-2xl mx-auto mb-12 text-lg leading-relaxed text-gray-800">
-          Ordering a Klara home is simple and transparent. We offer optimized
-          models — designed to fit on a standard trailer, maximize interior space,
-          and deliver the best possible price without compromising Nordic quality.
-        </p>
-
-        {/* IMAGE GRID – 4 cols desktop, 2 cols mobile */}
-        <section className="max-w-4xl mx-auto mb-20 px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {introImages.map((src, index) => (
-              <div
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className="group cursor-pointer overflow-hidden rounded-xl shadow-md"
-              >
-                <img
-                  src={src}
-                  alt={`Production image ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-            ))}
+        <div className="relative z-10 min-h-screen flex flex-col">
+          {/* HEADER */}
+          <div className="sticky top-0 z-50 backdrop-blur-md bg-black/10 border-b border-white/10">
+            <Header />
           </div>
-        </section>
 
-        {/* Steps */}
-        <section className="max-w-5xl mx-auto py-12 px-6 md:px-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {steps.map((step, index) => (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row items-start md:items-center text-left md:text-left transition-transform hover:scale-[1.02]"
-              >
-                <div
-                  className="flex items-center justify-center w-20 h-20 rounded-full mb-4 md:mb-0 md:mr-6 flex-shrink-0"
-                  style={{ backgroundColor: mossGreenTransparent }}
-                >
-                  {React.cloneElement(step.icon, { color: beige })}
+          {/* HERO CONTENT */}
+          <div className="flex-1 flex items-end">
+            <div className="w-full max-w-7xl mx-auto px-5 md:px-12 pb-12 md:pb-16">
+              <div className="w-full md:max-w-xl max-w-sm">
+                {/* HEADLINE */}
+                <div className="mb-6 md:mb-8">
+                  <h1
+                    className="text-3xl md:text-5xl font-semibold mb-4 md:mb-5 leading-tight"
+                    style={{
+                      color: beige,
+                      letterSpacing: "-0.02em",
+                      fontFamily: "'Outfit', 'Inter', sans-serif",
+                    }}
+                  >
+                    How It Works.
+                    <br />
+                    Simple Process.
+                    <br />
+                    Nordic Precision.
+                  </h1>
+
+                  <div
+                    style={{
+                      width: "100px",
+                      height: "2px",
+                      backgroundColor: beige,
+                      opacity: 0.8,
+                    }}
+                  />
                 </div>
 
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900">
-                    {step.cta ? (
-                      <Link href="/contact" className="hover:underline">
-                        {step.title}
-                      </Link>
-                    ) : (
-                      step.title
-                    )}
-                  </h3>
-                  <p className="text-gray-700 text-base leading-relaxed">
-                    {step.text}
+                {/* CONTENT BOX */}
+                <div
+                  className="rounded-2xl p-5 md:p-7 shadow-2xl"
+                  style={{
+                    background: "rgba(20,20,20,0.14)",
+                    backdropFilter: "blur(5px)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-4">
+                    Ordering a Klara home is simple and transparent.
+                  </p>
+
+                  <p className="text-base md:text-lg leading-relaxed text-gray-100">
+                    We offer optimized models — designed to fit on a standard
+                    trailer, maximize interior space, and deliver the best
+                    possible price without compromising Nordic quality.
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Fullscreen Modal */}
-        {currentIndex !== null && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
-            onClick={() => setCurrentIndex(null)}
-          >
-            <div
-              className="relative max-w-[90vw] max-h-[90vh]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={introImages[currentIndex]}
-                alt="Full view"
-                className="rounded-2xl shadow-2xl object-contain max-h-[90vh]"
-              />
-
-              <button
-                onClick={() =>
-                  setCurrentIndex(
-                    (currentIndex + introImages.length - 1) % introImages.length
-                  )
-                }
-                className="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
-              >
-                ‹
-              </button>
-
-              <button
-                onClick={() =>
-                  setCurrentIndex(
-                    (currentIndex + 1) % introImages.length
-                  )
-                }
-                className="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
-              >
-                ›
-              </button>
             </div>
           </div>
-        )}
+        </div>
+      </section>
 
-        {/* Footer */}
-        <footer className="text-gray-700 text-sm py-6 text-center">
-          © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
-        </footer>
-      </div>
+      {/* STEPS */}
+      <section
+        className="relative py-24 px-6"
+        style={{
+          backgroundColor: beige,
+          color: forestGreen,
+        }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className="rounded-2xl p-8 transition duration-300 hover:-translate-y-1"
+                style={{
+                  background: "rgba(255,255,255,0.55)",
+                  border: "1px solid rgba(47,62,47,0.08)",
+                  backdropFilter: "blur(6px)",
+                }}
+              >
+                <div className="flex items-start">
+                  <div
+                    className="flex items-center justify-center w-20 h-20 rounded-full mr-6 flex-shrink-0 shadow-md"
+                    style={{
+                      backgroundColor: "white",
+                    }}
+                  >
+                    {step.icon}
+                  </div>
 
-      {/* Responsiv tweak */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          img[class*='object-cover'] {
-            height: 180px !important;
-          }
-        }
-      `}</style>
-    </section>
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4">
+                      {step.cta ? (
+                        <Link href="/contact" className="hover:underline">
+                          {step.title}
+                        </Link>
+                      ) : (
+                        step.title
+                      )}
+                    </h3>
+
+                    <p
+                      className="text-base leading-relaxed"
+                      style={{ color: "rgba(47,62,47,0.85)" }}
+                    >
+                      {step.text}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* IMAGE GRID */}
+          <section className="max-w-5xl mx-auto mt-24">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {introImages.map((src, index) => (
+                <div
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className="group cursor-pointer overflow-hidden rounded-2xl shadow-lg"
+                >
+                  <img
+                    src={src}
+                    alt={`Production image ${index + 1}`}
+                    className="w-full h-[220px] object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* BUTTONS */}
+          <div className="flex flex-wrap justify-center gap-5 mt-20">
+            <Link
+              href="/concept"
+              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
+              style={{
+                ...buttonStyle,
+                width: "220px",
+              }}
+            >
+              Our Concept
+            </Link>
+
+            <Link
+              href="/howitworks"
+              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
+              style={{
+                ...buttonStyle,
+                width: "220px",
+              }}
+            >
+              How It Works
+            </Link>
+
+            <Link
+              href="/modelrange"
+              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
+              style={{
+                ...buttonStyle,
+                width: "220px",
+              }}
+            >
+              Model Range
+            </Link>
+
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
+              style={{
+                ...buttonStyle,
+                width: "220px",
+              }}
+            >
+              About Us
+            </Link>
+          </div>
+
+          {/* FOOTER TEXT */}
+          <div className="text-center text-sm text-gray-600 mt-16">
+            © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
+          </div>
+        </div>
+      </section>
+
+      {/* MODAL */}
+      {currentIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          onClick={() => setCurrentIndex(null)}
+        >
+          <div
+            className="relative max-w-[90vw] max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={introImages[currentIndex]}
+              alt="Full view"
+              className="rounded-2xl shadow-2xl object-contain max-h-[90vh]"
+            />
+
+            <button
+              onClick={() =>
+                setCurrentIndex((prev) => {
+                  if (prev === null) return null;
+                  return (
+                    (prev + introImages.length - 1) % introImages.length
+                  );
+                })
+              }
+              className="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
+            >
+              ‹
+            </button>
+
+            <button
+              onClick={() =>
+                setCurrentIndex((prev) => {
+                  if (prev === null) return null;
+                  return (prev + 1) % introImages.length;
+                })
+              }
+              className="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/80 hover:bg-white text-2xl"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

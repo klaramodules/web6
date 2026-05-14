@@ -32,165 +32,289 @@ export default function Home() {
   ];
 
   const buttonStyle = {
-    backgroundColor: "rgba(47, 62, 47, 0.6)",
+    backgroundColor: "rgba(47, 62, 47, 0.55)",
     color: beige,
-    border: `1px solid ${beige}`,
-    backdropFilter: "blur(4px)",
+    border: `1px solid rgba(245,240,230,0.65)`,
+    backdropFilter: "blur(8px)",
   };
 
   return (
     <>
+      {/* HERO */}
       <section
-        className="relative text-center w-full min-h-screen bg-center bg-no-repeat"
+        className="relative w-full min-h-screen overflow-hidden bg-cover bg-no-repeat bg-[60%_center] md:bg-center"
         style={{
-          backgroundImage: "url('/bakgrund2.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center top",
-          backgroundAttachment: "fixed",
+          backgroundImage: "url('/2001.jpg')",
         }}
       >
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Desktop gradient */}
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{
+            background: `
+              linear-gradient(
+                to right,
+                rgba(15,15,15,0.58) 0%,
+                rgba(15,15,15,0.38) 30%,
+                rgba(15,15,15,0.18) 58%,
+                rgba(15,15,15,0.42) 100%
+              )
+            `,
+          }}
+        />
 
-        <div className="relative z-10 pt-32 px-4">
-          <Header />
+        {/* Mobile gradient */}
+        <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
 
-          {/* Hero */}
-          <div className="mb-10 text-center">
-            <h1
-              className="text-3xl md:text-4xl font-semibold mb-4"
-              style={{
-                color: beige,
-                letterSpacing: "0.5px",
-                fontFamily: "'Outfit', 'Inter', sans-serif",
-                lineHeight: "1.3",
-              }}
-            >
-              Modular Homes. Nordic Quality.
-              <br />
-              Finnish Precision.
-            </h1>
+        {/* Soft darkening */}
+        <div className="absolute inset-0 bg-black/10" />
+
+        {/* MAIN WRAPPER */}
+        <div className="relative z-10 min-h-screen flex flex-col pt-[96px] md:pt-[120px]">
+          
+          {/* HEADER */}
+          <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/10 border-b border-white/10">
+            <Header />
+          </div>
+
+          {/* HERO CONTENT */}
+          <div className="flex-1 flex items-end">
+            <div className="w-full max-w-7xl mx-auto px-5 md:px-12 pb-12 md:pb-16">
+              <div className="w-full md:max-w-xl max-w-sm">
+
+                {/* HEADLINE */}
+                <div className="mb-6 md:mb-8">
+                  <h1
+                    className="text-3xl md:text-5xl font-semibold mb-4 md:mb-5 leading-tight"
+                    style={{
+                      color: beige,
+                      letterSpacing: "-0.02em",
+                      fontFamily: "'Outfit', 'Inter', sans-serif",
+                    }}
+                  >
+                    Modular Homes.
+                    <br />
+                    Nordic Quality.
+                    <br />
+                    Finnish Precision.
+                  </h1>
+
+                  <div
+                    style={{
+                      width: "100px",
+                      height: "2px",
+                      backgroundColor: beige,
+                      opacity: 0.8,
+                    }}
+                  />
+                </div>
+
+                {/* CONTENT BOX */}
+                <div
+                  className="rounded-2xl p-5 md:p-7 shadow-2xl"
+                  style={{
+                    background: "rgba(20,20,20,0.14)",
+                    backdropFilter: "blur(5px)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-4">
+                    Klara makes Finnish craftsmanship accessible across Europe.
+                  </p>
+
+                  <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-6">
+                    Each home is built by experienced Finnish housebuilders,
+                    completed in the factory, and transported by truck to your
+                    site — where it’s lifted into place and connected to power
+                    and water.
+                  </p>
+
+                  {/* CTA */}
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center font-semibold py-3 md:py-4 rounded-xl shadow-xl transition duration-300 hover:scale-[1.02] hover:shadow-2xl text-sm md:text-base"
+                    style={{
+                      ...buttonStyle,
+                      width: "220px",
+                    }}
+                  >
+                    Get an Offer
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section
+        className="relative py-24 px-6"
+        style={{
+          backgroundColor: beige,
+          color: forestGreen,
+        }}
+      >
+        <div className="max-w-6xl mx-auto">
+          
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold mb-5">
+              How It Works
+            </h2>
 
             <div
               className="mx-auto"
               style={{
-                width: "220px",
+                width: "100px",
                 height: "2px",
-                backgroundColor: beige,
+                backgroundColor: forestGreen,
+                opacity: 0.7,
               }}
             />
           </div>
 
-          <p className="max-w-xl mx-auto mb-4 text-lg leading-relaxed text-gray-100">
-            Klara makes Finnish craftsmanship accessible across Europe.
-          </p>
-          <p className="max-w-xl mx-auto mb-4 text-lg leading-relaxed text-gray-100">
-            Each home is built by experienced Finnish housebuilders, completed in
-            the factory, and transported by truck to your site — where it’s lifted
-            into place and connected to power and water.
-          </p>
-          <p className="max-w-xl mx-auto mb-8 text-lg leading-relaxed text-gray-100">
-            No construction hassle, no hidden steps. Just timeless Nordic quality.
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className="rounded-2xl p-8 text-center transition duration-300 hover:-translate-y-1"
+                style={{
+                  background: "rgba(255,255,255,0.55)",
+                  border: "1px solid rgba(47,62,47,0.08)",
+                  backdropFilter: "blur(6px)",
+                }}
+              >
+                <div
+                  className="flex items-center justify-center w-20 h-20 rounded-full mb-6 mx-auto shadow-md"
+                  style={{
+                    backgroundColor: "white",
+                  }}
+                >
+                  {step.icon}
+                </div>
 
-          {/* Primary CTA */}
-          <div className="flex justify-center mb-8">
+                <h3 className="text-2xl font-semibold mb-4">
+                  {step.title}
+                </h3>
+
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: "rgba(47,62,47,0.85)" }}
+                >
+                  {step.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* BUTTONS */}
+          <div className="flex flex-wrap justify-center gap-5 mt-20">
+            
             <Link
-              href="/contact"
-              className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center"
-              style={{ ...buttonStyle, width: "220px" }}
+              href="/concept"
+              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
+              style={{
+                ...buttonStyle,
+                width: "220px",
+              }}
             >
-              Get an Offer
+              Our Concept
+            </Link>
+
+            <Link
+              href="/howitworks"
+              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
+              style={{
+                ...buttonStyle,
+                width: "220px",
+              }}
+            >
+              How It Works
+            </Link>
+
+            <Link
+              href="/modelrange"
+              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
+              style={{
+                ...buttonStyle,
+                width: "220px",
+              }}
+            >
+              Model Range
+            </Link>
+
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
+              style={{
+                ...buttonStyle,
+                width: "220px",
+              }}
+            >
+              About Us
             </Link>
           </div>
-
-          {/* How It Works */}
-          <section className="py-12 px-6 md:px-0 bg-transparent">
-            <div className="max-w-5xl mx-auto text-center">
-              <h2
-                className="text-3xl md:text-4xl font-semibold mb-8"
-                style={{ color: beige }}
-              >
-                How It Works
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-6">
-                {steps.map((step, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center text-center transition-transform hover:scale-[1.02]"
-                  >
-                    {index === 0 ? (
-                      <Link href="/contact" className="group">
-                        <div
-                          className="flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-md transition-transform group-hover:scale-105"
-                          style={{ backgroundColor: beige }}
-                        >
-                          {step.icon}
-                        </div>
-                        <h3 className="text-xl font-semibold mb-2 text-gray-100 group-hover:underline">
-                          {step.title}
-                        </h3>
-                      </Link>
-                    ) : (
-                      <>
-                        <div
-                          className="flex items-center justify-center w-20 h-20 rounded-full mb-4 shadow-md"
-                          style={{ backgroundColor: beige }}
-                        >
-                          {step.icon}
-                        </div>
-                        <h3 className="text-xl font-semibold mb-2 text-gray-100">
-                          {step.title}
-                        </h3>
-                      </>
-                    )}
-
-                    <p className="text-gray-200 text-base leading-relaxed">
-                      {step.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Secondary CTAs */}
-          <div className="flex flex-col items-center mt-2 mb-8">
-            <div className="flex justify-center gap-6 flex-wrap">
-              <Link href="/concept" className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center" style={{ ...buttonStyle, width: "220px" }}>
-                Our Concept
-              </Link>
-
-              <Link href="/howitworks" className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center" style={{ ...buttonStyle, width: "220px" }}>
-                How It Works
-              </Link>
-
-              <Link href="/modelrange" className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center" style={{ ...buttonStyle, width: "220px" }}>
-                Model Range
-              </Link>
-
-              <Link href="/about" className="inline-block font-semibold py-3 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg text-center" style={{ ...buttonStyle, width: "220px" }}>
-                About Us
-              </Link>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <footer className="text-gray-200 text-sm py-6">
-            © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
-          </footer>
         </div>
       </section>
 
-      {/* Mobile background fix */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          section {
-            background-size: auto 100%;
-            background-position: center top;
-          }
-        }
-      `}</style>
+      {/* IMAGE SECTION */}
+      <section
+        className="relative h-[70vh] bg-cover overflow-hidden bg-[62%_center] md:bg-center"
+        style={{
+          backgroundImage: "url('/2004.jpg')",
+        }}
+      >
+        {/* Desktop overlay */}
+        <div className="absolute inset-0 hidden md:block bg-black/25" />
+
+        {/* Mobile overlay */}
+        <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
+
+        {/* CONTENT */}
+        <div className="relative z-10 h-full flex items-end">
+          <div className="w-full max-w-7xl mx-auto px-5 md:px-12 pb-12 md:pb-16">
+            <div className="w-full md:max-w-2xl max-w-sm">
+
+              <div
+                className="rounded-2xl p-5 md:p-7 shadow-2xl"
+                style={{
+                  background: "rgba(20,20,20,0.14)",
+                  backdropFilter: "blur(5px)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <h2
+                  className="text-3xl md:text-5xl font-semibold mb-5 leading-tight"
+                  style={{
+                    color: beige,
+                    letterSpacing: "-0.02em",
+                    fontFamily: "'Outfit', 'Inter', sans-serif",
+                  }}
+                >
+                  No construction hassle,
+                  <br />
+                  no hidden steps.
+                </h2>
+
+                <p className="text-base md:text-xl text-gray-100 leading-relaxed">
+                  Just timeless Nordic quality.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer
+        className="py-8 text-center text-sm"
+        style={{
+          backgroundColor: forestGreen,
+          color: beige,
+        }}
+      >
+        © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
+      </footer>
     </>
   );
 }
