@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Header from "../Header";
 import Link from "next/link";
 
 export default function Concept() {
@@ -16,7 +15,6 @@ export default function Concept() {
     backdropFilter: "blur(8px)",
   };
 
-  /* ===== Image gallery state ===== */
   const images = [
     "/jrt1.jpg",
     "/jrt2.jpg",
@@ -28,7 +26,6 @@ export default function Concept() {
 
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
-  /* Keyboard navigation */
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setCurrentIndex(null);
@@ -39,125 +36,109 @@ export default function Concept() {
         }
 
         if (e.key === "ArrowLeft") {
-          setCurrentIndex(
-            (currentIndex + images.length - 1) % images.length
-          );
+          setCurrentIndex((currentIndex + images.length - 1) % images.length);
         }
       }
     };
 
     window.addEventListener("keydown", handleKey);
-
     return () => window.removeEventListener("keydown", handleKey);
   }, [currentIndex, images.length]);
 
   return (
     <>
-     {/* HERO */}
-<section
-  className="relative w-full min-h-screen overflow-hidden bg-cover bg-no-repeat bg-[58%_center] md:bg-center"
+      {/* HERO */}
+      <section
+        className="relative w-full min-h-[100svh] overflow-hidden bg-cover bg-no-repeat bg-[58%_center] md:bg-center"
+        style={{ backgroundImage: "url('/jrt8.jpg')" }}
+      >
+       <div
+  className="absolute inset-0 hidden md:block"
   style={{
-    backgroundImage: "url('/jrt8.jpg')",
+    background: `
+      linear-gradient(
+        to right,
+        rgba(15,15,15,0.58) 0%,
+        rgba(15,15,15,0.38) 30%,
+        rgba(15,15,15,0.18) 58%,
+        rgba(15,15,15,0.42) 100%
+      )
+    `,
+  }}
+/>
+        <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
+
+        {/* ✅ FIXED POSITIONING ONLY */}
+        <div className="relative z-10 h-full min-h-[100svh] flex items-end justify-start">
+          <div className="w-full max-w-7xl mx-auto px-5 md:px-12 pb-12 md:pb-16">
+
+            <div className="w-full md:max-w-xl max-w-sm text-left">
+
+              <h1
+  className="text-3xl md:text-5xl font-semibold mb-4 leading-tight"
+  style={{
+    color: beige,
+    letterSpacing: "-0.02em",
+    fontFamily: "'Outfit', 'Inter', sans-serif",
   }}
 >
-  {/* Desktop overlay */}
-  <div
-    className="absolute inset-0 hidden md:block"
-    style={{
-      background: `
-        linear-gradient(
-          to right,
-          rgba(15,15,15,0.62) 0%,
-          rgba(15,15,15,0.42) 30%,
-          rgba(15,15,15,0.18) 58%,
-          rgba(15,15,15,0.45) 100%
-        )
-      `,
-    }}
-  />
+                Modular Homes.
+                <br />
+                Nordic Quality.
+                <br />
+                Finnish Precision.
+              </h1>
 
-  {/* Mobile overlay */}
-  <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
+              <div
+                style={{
+                  width: "100px",
+                  height: "2px",
+                  backgroundColor: beige,
+                  opacity: 0.8,
+                  marginBottom: "20px",
+                }}
+              />
 
-  {/* Soft darkening */}
-  <div className="absolute inset-0 bg-black/10" />
+              <div
+                className="rounded-2xl p-5 md:p-7 shadow-2xl"
+                style={{
+                  background: "rgba(20,20,20,0.14)",
+                  backdropFilter: "blur(5px)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <p className="text-gray-100 mb-4">
+                  When you choose a Klara modular home, you choose Nordic craftsmanship.
+                </p>
 
-  {/* MAIN WRAPPER */}
-  <div className="relative z-10 min-h-screen flex flex-col pt-[96px] md:pt-[120px]">
+                <p className="text-gray-100 mb-6">
+                  Built in Finland using natural materials that age beautifully and perform in harsh climates. — delivered ready-to-use across Europe.
+                </p>
 
-    {/* HEADER */}
-    <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/10 border-b border-white/10">
-      <Header />
-    </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/download-catalogue"
+                    style={buttonStyle}
+                    className="px-6 py-3 rounded-xl text-center font-semibold w-[220px]"
+                  >
+                    Get Catalogue
+                  </Link>
 
-    {/* HERO CONTENT */}
-    <div className="flex-1 flex items-end">
-      <div className="w-full max-w-7xl mx-auto px-5 md:px-12 pb-12 md:pb-16">
+                  <Link
+                    href="/contact"
+                    style={buttonStyle}
+                    className="px-6 py-3 rounded-xl text-center font-semibold w-[220px]"
+                  >
+                    Contact Us
+                  </Link>
+                </div>
 
-        {/* SAME POSITIONING AS LANDING PAGE */}
-        <div className="w-full md:max-w-xl max-w-sm">
+              </div>
+            </div>
 
-          {/* TITLE */}
-          <div className="mb-6 md:mb-8">
-            <h1
-              className="text-3xl md:text-5xl font-semibold mb-4 md:mb-5 leading-tight"
-              style={{
-                color: beige,
-                letterSpacing: "-0.02em",
-                fontFamily: "'Outfit', 'Inter', sans-serif",
-              }}
-            >
-              Modular Homes.
-              <br />
-              Nordic Quality.
-              <br />
-              Finnish Precision.
-            </h1>
-
-            <div
-              style={{
-                width: "100px",
-                height: "2px",
-                backgroundColor: beige,
-                opacity: 0.8,
-              }}
-            />
-          </div>
-
-          {/* HERO BOX */}
-          <div
-            className="rounded-2xl p-5 md:p-7 shadow-2xl"
-            style={{
-              background: "rgba(20,20,20,0.14)",
-              backdropFilter: "blur(5px)",
-              border: "1px solid rgba(255,255,255,0.08)",
-            }}
-          >
-            <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-4">
-              When you choose a Klara modular home, you choose Nordic craftsmanship.
-            </p>
-
-            <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-6">
-              Built in Finland using natural materials that age beautifully
-              and perform in harsh climates — delivered ready-to-use across Europe.
-            </p>
-
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center font-semibold py-3 md:py-4 rounded-xl shadow-xl transition duration-300 hover:scale-[1.02] hover:shadow-2xl text-sm md:text-base"
-              style={{
-                ...buttonStyle,
-                width: "220px",
-              }}
-            >
-              Contact us
-            </Link>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* MAIN CONTENT */}
       <section
@@ -411,11 +392,7 @@ export default function Concept() {
           </div>
         )}
 
-        {/* FOOTER */}
-        <footer className="text-gray-700 text-sm py-8 text-center">
-          © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
-        </footer>
-      </section>
+              </section>
     </>
   );
 }

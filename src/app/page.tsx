@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Header from "./Header";
 import { ShoppingCart, Factory, Truck, Plug } from "lucide-react";
 
 export default function Home() {
@@ -47,7 +46,7 @@ export default function Home() {
           backgroundImage: "url('/2001.jpg')",
         }}
       >
-        {/* Desktop gradient */}
+        {/* overlays */}
         <div
           className="absolute inset-0 hidden md:block"
           style={{
@@ -62,87 +61,83 @@ export default function Home() {
             `,
           }}
         />
-
-        {/* Mobile gradient */}
         <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
-
-        {/* Soft darkening */}
         <div className="absolute inset-0 bg-black/10" />
 
-        {/* MAIN WRAPPER */}
-        <div className="relative z-10 min-h-screen flex flex-col pt-[96px] md:pt-[120px]">
-          
-          {/* HEADER */}
-          <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/10 border-b border-white/10">
-            <Header />
-          </div>
+        {/* ✅ FIX: bottom-left alignment exactly like HowItWorks */}
+        <div className="relative z-10 h-full min-h-screen flex items-end justify-start">
+          <div className="w-full max-w-7xl mx-auto px-5 md:px-12 pb-12 md:pb-16">
 
-          {/* HERO CONTENT */}
-          <div className="flex-1 flex items-end">
-            <div className="w-full max-w-7xl mx-auto px-5 md:px-12 pb-12 md:pb-16">
-              <div className="w-full md:max-w-xl max-w-sm">
+            <div className="w-full md:max-w-xl max-w-sm text-left">
 
-                {/* HEADLINE */}
-                <div className="mb-6 md:mb-8">
-                  <h1
-                    className="text-3xl md:text-5xl font-semibold mb-4 md:mb-5 leading-tight"
-                    style={{
-                      color: beige,
-                      letterSpacing: "-0.02em",
-                      fontFamily: "'Outfit', 'Inter', sans-serif",
-                    }}
-                  >
-                    Modular Homes.
-                    <br />
-                    Nordic Quality.
-                    <br />
-                    Finnish Precision.
-                  </h1>
-
-                  <div
-                    style={{
-                      width: "100px",
-                      height: "2px",
-                      backgroundColor: beige,
-                      opacity: 0.8,
-                    }}
-                  />
-                </div>
-
-                {/* CONTENT BOX */}
-                <div
-                  className="rounded-2xl p-5 md:p-7 shadow-2xl"
+              {/* HEADLINE */}
+              <div className="mb-6 md:mb-8">
+                <h1
+                  className="text-3xl md:text-5xl font-semibold mb-4 md:mb-5 leading-tight"
                   style={{
-                    background: "rgba(20,20,20,0.14)",
-                    backdropFilter: "blur(5px)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    color: beige,
+                    letterSpacing: "-0.02em",
+                    fontFamily: "'Outfit', 'Inter', sans-serif",
                   }}
                 >
-                  <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-4">
-                    Klara makes Finnish craftsmanship accessible across Europe.
-                  </p>
+                  Modular Homes.
+                  <br />
+                  Nordic Quality.
+                  <br />
+                  Finnish Precision.
+                </h1>
 
-                  <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-6">
-                    Each home is built by experienced Finnish housebuilders,
-                    completed in the factory, and transported by truck to your
-                    site — where it’s lifted into place and connected to power
-                    and water.
-                  </p>
+                <div
+                  style={{
+                    width: "100px",
+                    height: "2px",
+                    backgroundColor: beige,
+                    opacity: 0.8,
+                  }}
+                />
+              </div>
 
-                  {/* CTA */}
+              {/* CONTENT BOX */}
+              <div
+                className="rounded-2xl p-5 md:p-7 shadow-2xl"
+                style={{
+                  background: "rgba(20,20,20,0.14)",
+                  backdropFilter: "blur(5px)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-4">
+                  Klara makes Finnish craftsmanship accessible across Europe.
+                </p>
+
+                <p className="text-base md:text-lg leading-relaxed text-gray-100 mb-6">
+                  Each home is built by experienced Finnish housebuilders,
+completed in the factory, and transported by truck to your site —
+where it’s lifted into place and connected to power and water
+                </p>
+
+                {/* CTA */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/download-catalogue"
+                    className="inline-flex items-center justify-center font-semibold py-3 md:py-4 rounded-xl shadow-xl transition hover:scale-[1.02] hover:shadow-2xl text-sm md:text-base"
+                    style={{ ...buttonStyle, width: "220px" }}
+                  >
+                    Get Catalogue
+                  </Link>
+
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center font-semibold py-3 md:py-4 rounded-xl shadow-xl transition duration-300 hover:scale-[1.02] hover:shadow-2xl text-sm md:text-base"
-                    style={{
-                      ...buttonStyle,
-                      width: "220px",
-                    }}
+                    className="inline-flex items-center justify-center font-semibold py-3 md:py-4 rounded-xl shadow-xl transition hover:scale-[1.02] hover:shadow-2xl text-sm md:text-base"
+                    style={{ ...buttonStyle, width: "220px" }}
                   >
-                    Get an Offer
+                    Contact Us
                   </Link>
                 </div>
+
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -156,7 +151,7 @@ export default function Home() {
         }}
       >
         <div className="max-w-6xl mx-auto">
-          
+
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-semibold mb-5">
               How It Works
@@ -177,7 +172,7 @@ export default function Home() {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="rounded-2xl p-8 text-center transition duration-300 hover:-translate-y-1"
+                className="rounded-2xl p-6 text-center transition hover:-translate-y-1"
                 style={{
                   background: "rgba(255,255,255,0.55)",
                   border: "1px solid rgba(47,62,47,0.08)",
@@ -185,10 +180,8 @@ export default function Home() {
                 }}
               >
                 <div
-                  className="flex items-center justify-center w-20 h-20 rounded-full mb-6 mx-auto shadow-md"
-                  style={{
-                    backgroundColor: "white",
-                  }}
+                  className="flex items-center justify-center w-16 h-16 rounded-full mb-6 mx-auto shadow-md"
+                  style={{ backgroundColor: "white" }}
                 >
                   {step.icon}
                 </div>
@@ -197,67 +190,35 @@ export default function Home() {
                   {step.title}
                 </h3>
 
-                <p
-                  className="text-base leading-relaxed"
-                  style={{ color: "rgba(47,62,47,0.85)" }}
-                >
+                <p className="text-base leading-relaxed text-[rgba(47,62,47,0.85)]">
                   {step.text}
                 </p>
               </div>
             ))}
           </div>
-
+     
           {/* BUTTONS */}
           <div className="flex flex-wrap justify-center gap-5 mt-20">
-            
-            <Link
-              href="/concept"
-              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
-              style={{
-                ...buttonStyle,
-                width: "220px",
-              }}
-            >
+            <Link href="/concept" className="inline-flex justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]" style={{ ...buttonStyle, width: "220px" }}>
               Our Concept
             </Link>
 
-            <Link
-              href="/howitworks"
-              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
-              style={{
-                ...buttonStyle,
-                width: "220px",
-              }}
-            >
+            <Link href="/howitworks" className="inline-flex justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]" style={{ ...buttonStyle, width: "220px" }}>
               How It Works
             </Link>
 
-            <Link
-              href="/modelrange"
-              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
-              style={{
-                ...buttonStyle,
-                width: "220px",
-              }}
-            >
+            <Link href="/modelrange" className="inline-flex justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]" style={{ ...buttonStyle, width: "220px" }}>
               Model Range
             </Link>
 
-            <Link
-              href="/about"
-              className="inline-flex items-center justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]"
-              style={{
-                ...buttonStyle,
-                width: "220px",
-              }}
-            >
+            <Link href="/about" className="inline-flex justify-center font-semibold py-4 rounded-xl shadow-md transition hover:scale-[1.02]" style={{ ...buttonStyle, width: "220px" }}>
               About Us
             </Link>
           </div>
         </div>
       </section>
 
-      {/* IMAGE SECTION */}
+       {/* IMAGE SECTION */}
       <section
         className="relative h-[70vh] bg-cover overflow-hidden bg-[62%_center] md:bg-center"
         style={{
@@ -274,7 +235,6 @@ export default function Home() {
         <div className="relative z-10 h-full flex items-end">
           <div className="w-full max-w-7xl mx-auto px-5 md:px-12 pb-12 md:pb-16">
             <div className="w-full md:max-w-2xl max-w-sm">
-
               <div
                 className="rounded-2xl p-5 md:p-7 shadow-2xl"
                 style={{
@@ -304,17 +264,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer
-        className="py-8 text-center text-sm"
-        style={{
-          backgroundColor: forestGreen,
-          color: beige,
-        }}
-      >
-        © {new Date().getFullYear()} Klara Nordic Modules. Built in Finland.
-      </footer>
     </>
   );
 }
