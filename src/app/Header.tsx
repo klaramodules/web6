@@ -16,6 +16,7 @@ export default function Header() {
     { href: "/modelrange", label: "Model Range" },
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact Us" },
+{ href: "/explore", label: "Explore" },
   ];
 
   const beige = "#f7f3eb";
