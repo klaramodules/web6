@@ -18,19 +18,19 @@ export default function HowItWorksPage() {
     },
     {
       icon: <Factory size={48} strokeWidth={1.5} color={forestGreen} />,
-      title: "Built in Finland",
+      title: "Built in Finland — Nordic Craftsmanship",
       text:
         "We begin production as soon as your order is confirmed. Thanks to our optimized model, construction takes 12–15 weeks. Your home is built by experienced Finnish craftsmen following Nordic building traditions. Each module is completed indoors, fully finished, and inspected before transport.",
     },
     {
       icon: <Truck size={48} strokeWidth={1.5} color={forestGreen} />,
-      title: "Delivered",
+      title: "Delivered Across Europe",
       text:
         "Once ready, the module is loaded onto a standard trailer and delivered anywhere in Europe. Delivery typically takes 1–2 weeks depending on destination. The home is unloaded by crane, and transport costs are quoted individually.",
     },
     {
       icon: <Plug size={48} strokeWidth={1.5} color={forestGreen} />,
-      title: "Connected & Ready",
+      title: "Delivered Ready for Connection",
       text:
         "Upon arrival, your home is lifted into place and connected to electricity and water. Within just a few hours, your Klara module is fully ready — step inside and start living.",
     },

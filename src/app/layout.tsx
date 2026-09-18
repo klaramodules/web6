@@ -11,12 +11,30 @@ const roboto = RobotoFont({
 });
 
 export const metadata: Metadata = {
-  title: "Klara Nordic Modules",
-  description: "Klara modules - Built in Finland",
+  metadataBase: new URL("https://www.klaramodules.com"),
+
+  title: {
+    default: "Klara Nordic Modules — Modular Homes Built in Finland",
+    template: "%s | Klara Nordic Modules",
+  },
+
+  description:
+    "Nordic modular homes built in Finland for guest houses, Airbnb, small living and flexible home ownership.",
+
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/favicon.png",
+  },
+
+  openGraph: {
+    siteName: "Klara Nordic Modules",
+    locale: "en",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -26,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sv">
+    <html lang="en">
       <body className={`${roboto.className} overflow-x-hidden`}>
 
         {/* GLOBAL HEADER (FIXED) */}

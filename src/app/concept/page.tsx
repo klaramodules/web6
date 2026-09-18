@@ -273,32 +273,7 @@ export default function Concept() {
           </div>
 
           {/* Adaptable */}
-          <div className="mb-24">
-            <h2
-              className="text-3xl md:text-4xl font-semibold mb-5"
-              style={{
-                color: forestGreen,
-                fontFamily: "'Outfit', 'Inter', sans-serif",
-              }}
-            >
-              Adaptable for Tomorrow
-            </h2>
-
-            <div
-              className="mb-8"
-              style={{
-                width: "100px",
-                height: "2px",
-                backgroundColor: forestGreen,
-                opacity: 0.7,
-              }}
-            />
-
-            <p>
-              Life changes — and your Klara home can change with it. Move it to a new
-              location, repurpose it, or sell it on to someone else.
-            </p>
-          </div>
+          <div className="mb-24"> <h2 className="text-3xl md:text-4xl font-semibold mb-5" style={{ color: forestGreen, fontFamily: "'Outfit', 'Inter', sans-serif", }} > Adaptable for Tomorrow </h2> <div className="mb-8" style={{ width: "100px", height: "2px", backgroundColor: forestGreen, opacity: 0.7, }} /> <p> Life changes — and your Klara home can change with it. Move it to a new location, repurpose it, or{" "} <Link href="/explore/what-if-you-could-take-your-holiday-home-with-you" className="underline underline-offset-4 hover:opacity-70 transition-opacity" > take your holiday home with you </Link> . </p> </div>
 
           {/* WHAT YOU GET */}
           <div className="flex flex-col md:flex-row gap-8 my-12 items-stretch">
